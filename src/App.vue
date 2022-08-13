@@ -21,10 +21,13 @@
     </div>
   </header>
 
-  <RouterView />
+  <main>
+    <AppLayout />
+  </main>
 </template>
 
 <script setup lang="ts">
+import AppLayout from '@/layouts/AppLayout.vue'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 
