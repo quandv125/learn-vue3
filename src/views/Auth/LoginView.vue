@@ -13,7 +13,7 @@
             </div>            
             <div class="form-group">
                 <label>{{ $t('sign_in.input_text.password') }}</label>
-                <Field name="password" type="password" class="form-control" v-model="form.password" :class="{ 'is-invalid': errors.password }" />
+                <Field name="password" type="password" class="form-control" autocomplete="on" v-model="form.password" :class="{ 'is-invalid': errors.password }" />
                 <div class="invalid-feedback">{{errors.password}}</div>
             </div>            
             <div class="form-group">

@@ -13,18 +13,16 @@
         </thead>
         <tbody>
           <tr  v-for="(item, key) in purposes" :key="key">
-            <td>{{item.hash_id}}</td>
-            <td>{{item.name}}</td>
+            <td>{{item.id}}</td>
+            <td>{{item.title}}</td>
           </tr>
         </tbody>
     </table>
   </div>
-    
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import RepositoryFactory from '@/utils/repositories/RepositoryFactory'
-const Post = RepositoryFactory.get('posts')
+import rf from '@/utils/repositories/RequestFactory'
 
 export default defineComponent({
   name: "App",
@@ -34,24 +32,21 @@ export default defineComponent({
       submitted: false,
     };
   },
+  created () {
+    if(!this.purposes){
+      this.fetch()
+    }
+  },
   methods: {
     setStatus(){
-      this.callApi()
+      this.fetch()
     },
-    async callApi() {
-      const {data} = await Post.getAll();
+    async fetch() {
+      const data = await rf.getRequest('PostRequest').getData()
 
-      if(data && data.status == 'success'){
-        this.purposes = data.results
+      if(data){
+        this.purposes = data
       }
-      // Post.getAll().then((response) => {
-      //   console.log(response)
-      //   this.purposes = response.data.results
-      //   // this.$store.dispatch("getPosts", { self: response.data.results });
-      // })
-      // .catch((e) => {
-      //   console.log(e);
-      // });
     },
   }
 });
@@ -59,8 +54,7 @@ export default defineComponent({
 <style>
 @media (min-width: 1024px) {
   .about {
-    min-height: 100vh;
-    display: flex;
+    min-height: 15vh;
     align-items: center;
   }
 }
