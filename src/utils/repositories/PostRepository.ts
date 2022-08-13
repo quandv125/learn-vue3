@@ -1,4 +1,4 @@
-import client from '@/config/axios'
+import client from '@/utils/config/axios'
 const resource = '/posts';
 
 export default {

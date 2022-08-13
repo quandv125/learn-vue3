@@ -5,7 +5,7 @@
             {{ $t('sign_in.input_text.password') }}: test
         </div>
         <h2>{{ $t('sign_in.title') }}</h2>
-        <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
+        <Form @submit="onSubmit" :validation-schema="loginSchema" v-slot="{ errors, isSubmitting }">
             <div class="form-group">
                 <label> {{ $t('sign_in.input_text.username') }} </label>
                 <Field name="username" type="text" class="form-control" v-model="form.username" :class="{ 'is-invalid': errors.username }" />
@@ -33,26 +33,20 @@
 import { onMounted, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { Form, Field } from 'vee-validate';
-import * as Yup from 'yup';
+import {loginSchema} from '@/utils/validator'
+import { useAuthStore } from '@/utils/stores';
 
-import { useAuthStore } from '@/stores';
-
-const form = ref({username: 'test', password: 'test'})
+const form = ref({username: 'quandv.125@gmail.com', password: 'abc12345@'})
 
 const authStore = useAuthStore();
-const { user: authUser } = storeToRefs(authStore);
 
-const schema = Yup.object().shape({
-    username: Yup.string().required('Username is required'),
-    password: Yup.string().required('Password is required')
-});
+const { user: authUser } = storeToRefs(authStore);
 
 const onSubmit = (values, { setErrors }) => {
     const authStore = useAuthStore();
     const { username, password } = values;
     return authStore.login(username, password).catch(error => setErrors({ apiError: error }));
 }
-
 
 onMounted(() => {
     // console.log('Component is mounted!', authStore.user)

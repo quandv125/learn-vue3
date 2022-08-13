@@ -26,7 +26,7 @@ import TheWelcome from "@/components/TheWelcome.vue";
  <script setup lang="ts">
 import { storeToRefs } from 'pinia';
 
-import { useAuthStore, useUsersStore } from '@/stores';
+import { useAuthStore, useUsersStore } from '@/utils/stores';
 
 const authStore = useAuthStore();
 const { user: authUser } = storeToRefs(authStore);

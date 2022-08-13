@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import AppLayout from '@/layouts/AppLayout.vue'
+import AppLayout from '@/utils/layouts/AppLayout.vue'
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 

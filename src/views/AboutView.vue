@@ -23,7 +23,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from "vue";
-import RepositoryFactory from '@/repositories/RepositoryFactory'
+import RepositoryFactory from '@/utils/repositories/RepositoryFactory'
 const Post = RepositoryFactory.get('posts')
 
 export default defineComponent({
