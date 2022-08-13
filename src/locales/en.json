@@ -1,0 +1,23 @@
+{
+  "message": {
+    "hello": "hello world EN"
+  },
+  "common": {
+    "select_lang": "Hello, change language"
+  },
+  "sign_in": {
+    "title": "SignIn",
+    "buttons": {
+      "sign_in": "SignIn"
+    },
+    "input_text": {
+      "username": "Username",
+      "email": "Email",
+      "password": "Password"
+    },
+    "messages": {
+      "none_account": "Create new account",
+      "signup": "SignUp"
+    }
+  }
+}

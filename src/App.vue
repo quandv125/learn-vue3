@@ -1,7 +1,3 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
 
 <template>
   <header>
@@ -10,18 +6,35 @@ import HelloWorld from './components/HelloWorld.vue'
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
       <h1 id="test">
-        <span>Hello World!</span>
+        <span>{{$t('common.select_lang')}}</span>
       </h1>
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/login">Login</RouterLink>
+        <div class="locale-changer">
+          <select v-model="$i18n.locale" @change="changeLanguage">
+            <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">{{ locale }}</option>
+          </select>
+        </div>
       </nav>
     </div>
   </header>
 
   <RouterView />
 </template>
+
+<script setup lang="ts">
+import { RouterLink, RouterView } from 'vue-router'
+import HelloWorld from './components/HelloWorld.vue'
+
+
+const changeLanguage = (e) => {
+  localStorage.setItem('locale', e.target.value)
+}
+
+</script>
+
 
 <style scoped>
 header {
