@@ -1,6 +1,6 @@
-import axiosClient from '@/utils/config/axios'
+import axiosClient from "@/utils/config/axios";
 
-const endpoint = '/posts';
+const endpoint = "/posts";
 
 export default {
   find(id) {

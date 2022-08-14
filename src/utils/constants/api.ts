@@ -1,4 +1,4 @@
-import { stringify } from 'qs'
+import { stringify } from "qs";
 
 export const HTTP_CODE = {
   HTTP_SUCCESS: 200,
@@ -9,16 +9,16 @@ export const HTTP_CODE = {
   HTTP_CONFLICT: 409,
   HTTP_UNPROCESSABLE_ENTITY: 422,
   HTTP_TOO_MANY_REQUESTS: 429,
-  HTTP_INTERNAL_SERVER_ERROR: 500
-}
+  HTTP_INTERNAL_SERVER_ERROR: 500,
+};
 
 export const HTTP_METHOD = {
-  POST: 'POST',
-  GET: 'GET',
-  PUT: 'PUT',
-  DELETE: 'DELETE'
-}
+  POST: "POST",
+  GET: "GET",
+  PUT: "PUT",
+  DELETE: "DELETE",
+};
 
 export const paramsSerializer = (params) => {
-  return stringify(params, { arrayFormat: 'brackets' })
-}
+  return stringify(params, { arrayFormat: "brackets" });
+};

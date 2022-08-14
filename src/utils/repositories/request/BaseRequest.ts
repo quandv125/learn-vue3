@@ -1,17 +1,14 @@
-import axiosClient from '@/utils/config/axios'
-
-interface ResponseApi {
-  data: any;
-}
+import axiosClient from "@/utils/config/axios";
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 
 export default class BaseRequest {
-  get(url, params = {}) {
+  get(url: string, params = {}) {
     return new Promise((resolve, reject) => {
       axiosClient
         .get(url, {
-          params: params
+          params: params,
         })
-        .then(function (response: ResponseApi) {
+        .then(function (response: any) {
           resolve(response.data);
         })
         .catch(function (error: any) {
@@ -20,11 +17,11 @@ export default class BaseRequest {
     });
   }
 
-  put(url, data = {}) {
+  put(url: string, data = {}) {
     return new Promise((resolve, reject) => {
       axiosClient
         .put(url, data)
-        .then(function (response: ResponseApi) {
+        .then(function (response: any) {
           resolve(response.data);
         })
         .catch(function (error: any) {
@@ -33,11 +30,11 @@ export default class BaseRequest {
     });
   }
 
-  post(url, data = {}) {
+  post(url: string, data = {}) {
     return new Promise((resolve, reject) => {
       axiosClient
         .post(url, data)
-        .then(function (response: ResponseApi) {
+        .then(function (response: any) {
           resolve(response.data);
         })
         .catch(function (error: any) {
@@ -46,11 +43,11 @@ export default class BaseRequest {
     });
   }
 
-  del(url, params = {}) {
+  del(url: string, params = {}) {
     return new Promise((resolve, reject) => {
       axiosClient
-        .delete(url, { params: params } )
-        .then(function (response: ResponseApi) {
+        .delete(url, { params: params })
+        .then(function (response: any) {
           resolve(response.data);
         })
         .catch(function (error: any) {
@@ -58,15 +55,15 @@ export default class BaseRequest {
         });
     });
   }
-  
-  postWithFile(url, data = {}) {
+
+  postWithFile(url: string, data = {}) {
     const headers = {
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
     };
     return new Promise((resolve, reject) => {
       axiosClient
-        .post( url, data, headers)
-        .then((response: ResponseApi) => {
+        .post(url, data, headers)
+        .then((response: any) => {
           resolve(response.data);
         })
         .catch((error) => {
@@ -74,13 +71,11 @@ export default class BaseRequest {
         });
     });
   }
-  _responseHandler(resolve, res) {
+  _responseHandler(resolve: any, res: any) {
     return resolve(res.body.data);
   }
 
-  _errorHandler(reject, err) {
+  _errorHandler(reject: any, err: any) {
     return reject(err);
   }
-
 }
-

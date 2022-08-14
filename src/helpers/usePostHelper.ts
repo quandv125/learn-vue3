@@ -1,22 +1,21 @@
-import rf from '@/utils/repositories/RequestFactory'
+import rf from "@/utils/repositories/RequestFactory";
 
 // const fetchData = async () => {
 //     return await rf.getRequest('PostRequest').getData()
 // }
 
-
-export function usePostHelper () {
-  const getItinerary = _fetchData
+export function usePostHelper() {
+  const getItinerary = _fetchData;
   return {
     getItinerary,
-    isEstimating
-  }
+    isEstimating,
+  };
 }
 
-async function _fetchData () {
-  return await rf.getRequest('PostRequest').getData() 
+async function _fetchData() {
+  return await rf.getRequest("PostRequest").getData();
 }
 
-function isEstimating () {
-  return 'ok123'
+function isEstimating() {
+  return "ok123";
 }

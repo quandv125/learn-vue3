@@ -1,32 +1,31 @@
-import { nextTick } from 'vue'
-import { createI18n } from 'vue-i18n'
-import vn from '@/locales/vn.json'
-import en from '@/locales/en.json'
+import { nextTick } from "vue";
+import { createI18n } from "vue-i18n";
+import vn from "@/locales/vn.json";
+import en from "@/locales/en.json";
 
-export const SUPPORT_LOCALES = ['en', 'vn']
+export const SUPPORT_LOCALES = ["en", "vn"];
 
-const language = localStorage.getItem('locale') || 'en'
-
+const language = localStorage.getItem("locale") || "en";
 
 export const i18n = createI18n({
   locale: language,
   fallbackLocale: language,
-  messages: { en, vn},
+  messages: { en, vn },
   lazy: true,
   parsePages: false,
 });
 
-export function setupI18n(options = { locale: 'en' }) {
-  const i18n = createI18n(options)
-  setI18nLanguage(i18n, options.locale)
-  return i18n
+export function setupI18n(options = { locale: "en" }) {
+  const i18n = createI18n(options);
+  setI18nLanguage(i18n, options.locale);
+  return i18n;
 }
 
 export function setI18nLanguage(i18n, locale) {
-  if (i18n.mode === 'legacy') {
-    i18n.global.locale = locale
+  if (i18n.mode === "legacy") {
+    i18n.global.locale = locale;
   } else {
-    i18n.global.locale.value = locale
+    i18n.global.locale.value = locale;
   }
   /**
    * NOTE:
@@ -35,17 +34,17 @@ export function setI18nLanguage(i18n, locale) {
    *
    * axios.defaults.headers.common['Accept-Language'] = locale
    */
-  document.querySelector('html').setAttribute('lang', locale)
+  document.querySelector("html").setAttribute("lang", locale);
 }
 
 export async function loadLocaleMessages(i18n, locale) {
   // load locale messages with dynamic import
   const messages = await import(
     /* webpackChunkName: "locale-[request]" */ `./locales/${locale}.json`
-  )
+  );
 
   // set locale and locale message
-  i18n.global.setLocaleMessage(locale, messages.default)
+  i18n.global.setLocaleMessage(locale, messages.default);
 
-  return nextTick()
+  return nextTick();
 }

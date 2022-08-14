@@ -1,5 +1,5 @@
-import postRepository from './post';
+import postRepository from "./post";
 
 export default {
-  postRepository
+  postRepository,
 };
