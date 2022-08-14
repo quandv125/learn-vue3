@@ -1,6 +1,6 @@
 import BaseRequest from './BaseRequest'
 
-const resource = '/posts';
+const resource = '/users';
 
 export default class PostRequest extends BaseRequest {
     getData() {
