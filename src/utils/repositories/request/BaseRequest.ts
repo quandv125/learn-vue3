@@ -1,4 +1,4 @@
-import axiosClient from "@/utils/config/axios";
+import axiosClient from '@/utils/config/axios'
 /* eslint-disable  @typescript-eslint/no-explicit-any */
 
 export default class BaseRequest {
@@ -9,12 +9,12 @@ export default class BaseRequest {
           params: params,
         })
         .then(function (response: any) {
-          resolve(response.data);
+          resolve(response.data)
         })
         .catch(function (error: any) {
-          reject(error);
-        });
-    });
+          reject(error)
+        })
+    })
   }
 
   put(url: string, data = {}) {
@@ -22,12 +22,12 @@ export default class BaseRequest {
       axiosClient
         .put(url, data)
         .then(function (response: any) {
-          resolve(response.data);
+          resolve(response.data)
         })
         .catch(function (error: any) {
-          reject(error);
-        });
-    });
+          reject(error)
+        })
+    })
   }
 
   post(url: string, data = {}) {
@@ -35,12 +35,12 @@ export default class BaseRequest {
       axiosClient
         .post(url, data)
         .then(function (response: any) {
-          resolve(response.data);
+          resolve(response.data)
         })
         .catch(function (error: any) {
-          reject(error);
-        });
-    });
+          reject(error)
+        })
+    })
   }
 
   del(url: string, params = {}) {
@@ -48,34 +48,34 @@ export default class BaseRequest {
       axiosClient
         .delete(url, { params: params })
         .then(function (response: any) {
-          resolve(response.data);
+          resolve(response.data)
         })
         .catch(function (error: any) {
-          reject(error);
-        });
-    });
+          reject(error)
+        })
+    })
   }
 
   postWithFile(url: string, data = {}) {
     const headers = {
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    };
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    }
     return new Promise((resolve, reject) => {
       axiosClient
         .post(url, data, headers)
         .then((response: any) => {
-          resolve(response.data);
+          resolve(response.data)
         })
-        .catch((error) => {
-          this._errorHandler(reject, error);
-        });
-    });
+        .catch(error => {
+          this._errorHandler(reject, error)
+        })
+    })
   }
   _responseHandler(resolve: any, res: any) {
-    return resolve(res.body.data);
+    return resolve(res.body.data)
   }
 
   _errorHandler(reject: any, err: any) {
-    return reject(err);
+    return reject(err)
   }
 }

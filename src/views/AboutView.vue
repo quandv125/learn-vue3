@@ -27,53 +27,53 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, computed } from "vue";
-import { usePostHelper } from "@/helpers/usePostHelper"; // (1)
-import rf from "@/utils/repositories/RequestFactory";
+import { defineComponent, ref, computed } from 'vue'
+import { usePostHelper } from '@/helpers/usePostHelper' // (1)
+import rf from '@/utils/repositories/RequestFactory'
 
 export default defineComponent({
-  name: "App",
+  name: 'App',
   data() {
     return {
       purposes: [],
       submitted: false,
-    };
+    }
   },
   setup() {
-    const myData = ref([]);
-    const { getItinerary, isEstimating } = usePostHelper(); // (2)
-    const estimating = computed(() => isEstimating()); // (2s)
+    const myData = ref([])
+    const { getItinerary, isEstimating } = usePostHelper() // (2)
+    const estimating = computed(() => isEstimating()) // (2s)
 
     const fetch = async () => {
       // (3)
-      const data = await getItinerary();
+      const data = await getItinerary()
       if (data) {
-        myData.value = data;
+        myData.value = data
       }
-    };
+    }
 
     return {
       fetch, // (4)
       estimating,
       myData,
-    };
+    }
   },
   created() {
-    this.fetchData();
+    this.fetchData()
   },
   methods: {
     loadData() {
-      this.fetchData();
+      this.fetchData()
     },
     async fetchData() {
-      const data = await rf.getRequest("PostRequest").getData();
+      const data = await rf.getRequest('PostRequest').getData()
 
       if (data) {
-        this.purposes = data;
+        this.purposes = data
       }
     },
   },
-});
+})
 </script>
 <style>
 @media (min-width: 1024px) {

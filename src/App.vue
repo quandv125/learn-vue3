@@ -1,17 +1,11 @@
 <template>
   <header>
-    <img
-      alt="Vue logo"
-      class="logo"
-      src="@/assets/logo.svg"
-      width="125"
-      height="125"
-    />
+    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
       <HelloWorld msg="You did it!" />
       <h1 id="test">
-        <span>{{ $t("common.select_lang") }}</span>
+        <span>{{ $t('common.select_lang') }}</span>
       </h1>
       <nav>
         <RouterLink to="/">Home</RouterLink>
@@ -19,11 +13,7 @@
         <RouterLink to="/login">Login</RouterLink>
         <div class="locale-changer">
           <select v-model="$i18n.locale" @change="changeLanguage">
-            <option
-              v-for="locale in $i18n.availableLocales"
-              :key="`locale-${locale}`"
-              :value="locale"
-            >
+            <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">
               {{ locale }}
             </option>
           </select>
@@ -38,13 +28,13 @@
 </template>
 
 <script setup lang="ts">
-import AppLayout from "@/utils/layouts/AppLayout.vue";
-import { RouterLink } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
+import AppLayout from '@/utils/layouts/AppLayout.vue'
+import { RouterLink } from 'vue-router'
+import HelloWorld from './components/HelloWorld.vue'
 
-const changeLanguage = (e) => {
-  localStorage.setItem("locale", e.target.value);
-};
+const changeLanguage = (e: any) => {
+  localStorage.setItem('locale', e.target.value)
+}
 </script>
 
 <style scoped>

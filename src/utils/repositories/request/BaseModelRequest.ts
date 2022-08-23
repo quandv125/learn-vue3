@@ -1,32 +1,32 @@
-import BaseRequest from "./BaseRequest";
+import BaseRequest from './BaseRequest'
 
 export default class BaseModelRequest extends BaseRequest {
   getModelName() {
-    throw new Error("This method should be implemented in derived method.");
+    throw new Error('This method should be implemented in derived method.')
   }
 
-  getOne(id, params) {
-    const url = "/" + this.getModelName() + "/" + id;
-    return this.get(url, params);
+  getOne(id: number, params: object) {
+    const url = '/' + this.getModelName() + '/' + id
+    return this.get(url, params)
   }
 
-  getList(params) {
-    const url = "/admin/api/" + this.getModelName();
-    return this.get(url, params);
+  getList(params: object) {
+    const url = '/admin/api/' + this.getModelName()
+    return this.get(url, params)
   }
 
-  createANewOne(data) {
-    const url = "/" + this.getModelName();
-    return this.post(url, data);
+  createANewOne(params: object) {
+    const url = '/' + this.getModelName()
+    return this.post(url, params)
   }
 
-  updateOne(id, data) {
-    const url = "/" + this.getModelName() + "/" + id;
-    return this.put(url, data);
+  updateOne(id: number, params: object) {
+    const url = '/' + this.getModelName() + '/' + id
+    return this.put(url, params)
   }
 
-  removeOne(id) {
-    const url = "/" + this.getModelName() + "/" + id;
-    return this.del(url);
+  removeOne(id: number) {
+    const url = '/' + this.getModelName() + '/' + id
+    return this.del(url)
   }
 }

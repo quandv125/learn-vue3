@@ -1,17 +1,17 @@
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance } from 'axios'
 
-const baseDomain = "https://jsonplaceholder.typicode.com";
-const baseURL = `${baseDomain}`; // Incase of /api/v1;
+const baseDomain = 'https://jsonplaceholder.typicode.com'
+const baseURL = `${baseDomain}` // Incase of /api/v1;
 
 // ALL default configuration here
-const token = "";
+const token = ''
 
 const apiClient: AxiosInstance = axios.create({
   baseURL,
   headers: {
-    Accept: "application/json",
-    "Content-type": "application/json",
+    Accept: 'application/json',
+    ContentType: 'application/json',
     Authorization: `Bearer ${token}`,
   },
-});
-export default apiClient;
+})
+export default apiClient

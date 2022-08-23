@@ -15,32 +15,28 @@ import TheWelcome from "@/components/TheWelcome.vue";
     <p>You're logged in with Vue 3 + Pinia & JWT!!</p>
     <h3>Users from secure api end point:</h3>
     <ul v-if="users.length">
-      <li v-for="user in users" :key="user.id">
-        {{ user.firstName }} {{ user.lastName }}
-      </li>
+      <li v-for="user in users" :key="user.id">{{ user.firstName }} {{ user.lastName }}</li>
     </ul>
     <div v-if="users.loading" class="spinner-border spinner-border-sm"></div>
-    <div v-if="users.error" class="text-danger">
-      Error loading users: {{ users.error }}
-    </div>
+    <div v-if="users.error" class="text-danger">Error loading users: {{ users.error }}</div>
 
     <button @click="logout">Logout</button>
   </div>
 </template>
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
+import { storeToRefs } from 'pinia'
 
-import { useAuthStore, useUsersStore } from "@/utils/stores";
+import { useAuthStore, useUsersStore } from '@/utils/stores'
 
-const authStore = useAuthStore();
-const { user: authUser } = storeToRefs(authStore);
+const authStore = useAuthStore()
+const { user: authUser }: any = storeToRefs(authStore)
 
-const usersStore = useUsersStore();
-const { users } = storeToRefs(usersStore);
+const usersStore = useUsersStore()
+const { users }: any = storeToRefs(usersStore)
 
-usersStore.getAll();
+usersStore.getAll()
 
 const logout = () => {
-  return authStore.logout();
-};
+  return authStore.logout()
+}
 </script>
