@@ -8,7 +8,7 @@ export const useAuthStore = defineStore({
   id: 'auth',
   state: () => ({
     // initialize state from local storage to enable user to stay logged in
-    user: JSON.parse(localStorage.getItem('user') || ''),
+    user: JSON.parse(localStorage.getItem('user') || '{}'),
     returnUrl: null,
   }),
   actions: {
