@@ -1,32 +1,80 @@
-import BaseRequest from './BaseRequest'
+import axiosClient from '@/utils/config/axios'
 
-export default class BaseModelRequest extends BaseRequest {
-  getModelName() {
-    throw new Error('This method should be implemented in derived method.')
+export default class BaseRequest {
+  get(url: string, params = {}) {
+    return new Promise((resolve, reject) => {
+      axiosClient
+        .get(url, {
+          params: params,
+        })
+        .then(function (response) {
+          resolve(response.data)
+        })
+        .catch(function (error) {
+          reject(error)
+        })
+    })
   }
 
-  getOne(id: number, params: object) {
-    const url = '/' + this.getModelName() + '/' + id
-    return this.get(url, params)
+  put(url: string, data = {}) {
+    return new Promise((resolve, reject) => {
+      axiosClient
+        .put(url, data)
+        .then(function (response) {
+          resolve(response.data)
+        })
+        .catch(function (error) {
+          reject(error)
+        })
+    })
   }
 
-  getList(params: object) {
-    const url = '/admin/api/' + this.getModelName()
-    return this.get(url, params)
+  post(url: string, data = {}) {
+    return new Promise((resolve, reject) => {
+      axiosClient
+        .post(url, data)
+        .then(function (response) {
+          resolve(response.data)
+        })
+        .catch(function (error) {
+          reject(error)
+        })
+    })
   }
 
-  createANewOne(params: object) {
-    const url = '/' + this.getModelName()
-    return this.post(url, params)
+  del(url: string, params = {}) {
+    return new Promise((resolve, reject) => {
+      axiosClient
+        .delete(url, { params: params })
+        .then(function (response) {
+          resolve(response.data)
+        })
+        .catch(function (error) {
+          reject(error)
+        })
+    })
   }
 
-  updateOne(id: number, params: object) {
-    const url = '/' + this.getModelName() + '/' + id
-    return this.put(url, params)
+  postWithFile(url: string, data = {}) {
+    const headers = {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    }
+    return new Promise((resolve, reject) => {
+      axiosClient
+        .post(url, data, headers)
+        .then(response => {
+          resolve(response.data)
+        })
+        .catch(error => {
+          this._errorHandler(reject, error)
+        })
+    })
+  }
+  _responseHandler(resolve: any, res: any) {
+    return resolve(res.body.data)
   }
 
-  removeOne(id: number) {
-    const url = '/' + this.getModelName() + '/' + id
-    return this.del(url)
+  _errorHandler(reject: any, err: any) {
+    return reject(err)
   }
 }

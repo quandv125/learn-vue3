@@ -1,9 +1,7 @@
-import BaseRequest from './BaseRequest'
-
-const resource = '/users'
+import BaseRequest from '@/utils/repositories/request/BaseRequest'
 
 export default class PostRequest extends BaseRequest {
-  getData() {
-    return this.get(`${resource}`)
+  getData(url = '/users') {
+    return this.get(`${url}`)
   }
 }
