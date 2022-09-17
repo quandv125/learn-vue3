@@ -1,4 +1,4 @@
-const instances = {}
+const instances: any = {}
 export default class RequestFactory {
   static getRequest(classname: string) {
     const RequestClass = requestMap[classname]
@@ -16,6 +16,6 @@ export default class RequestFactory {
 
 import PostRequest from './request/PostRequest'
 
-const requestMap = {
+const requestMap: any = {
   PostRequest,
 }

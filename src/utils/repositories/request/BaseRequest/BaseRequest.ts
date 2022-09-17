@@ -1,5 +1,4 @@
 import axiosClient from '@/utils/config/axios'
-/* eslint-disable  @typescript-eslint/no-explicit-any */
 
 export default class BaseRequest {
   get(url: string, params = {}) {

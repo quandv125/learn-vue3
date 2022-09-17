@@ -1,14 +1,3 @@
-<!-- <script setup lang="ts">
-import TheWelcome from "@/components/TheWelcome.vue";
-</script>
-
-<template>
-  <main>
-    <TheWelcome />
-  </main>
-</template>
- -->
-
 <template>
   <div>
     <h1>Hi {{ authUser?.firstName }}!</h1>
