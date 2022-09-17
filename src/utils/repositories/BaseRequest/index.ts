@@ -16,6 +16,19 @@ export default class BaseRequest {
     })
   }
 
+  post(url: string, data = {}) {
+    return new Promise((resolve, reject) => {
+      axiosClient
+        .post(url, data)
+        .then(function (response) {
+          resolve(response.data)
+        })
+        .catch(function (error) {
+          reject(error)
+        })
+    })
+  }
+
   put(url: string, data = {}) {
     return new Promise((resolve, reject) => {
       axiosClient
@@ -29,10 +42,10 @@ export default class BaseRequest {
     })
   }
 
-  post(url: string, data = {}) {
+  patch(url: string, data = {}) {
     return new Promise((resolve, reject) => {
       axiosClient
-        .post(url, data)
+        .patch(url, data)
         .then(function (response) {
           resolve(response.data)
         })
