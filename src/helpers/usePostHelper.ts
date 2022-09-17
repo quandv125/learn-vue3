@@ -1,8 +1,4 @@
-import rf from '@/utils/repositories/RequestFactory'
-
-// const fetchData = async () => {
-//     return await rf.getRequest('PostRequest').getData()
-// }
+import rf from '@/utils/repositories'
 
 export function usePostHelper() {
   const getItinerary = _fetchData
@@ -15,6 +11,10 @@ export function usePostHelper() {
 async function _fetchData() {
   return await rf.getRequest('PostRequest').getData()
 }
+
+// const fetchData = async () => {
+//   return await rf.getRequest('PostRequest').getData()
+// }
 
 function isEstimating() {
   return 'ok123'

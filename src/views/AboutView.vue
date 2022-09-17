@@ -29,7 +29,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue'
 import { usePostHelper } from '@/helpers/usePostHelper' // (1)
-import rf from '@/utils/repositories/RequestFactory'
+import rf from '@/utils/repositories'
 
 export default defineComponent({
   name: 'App',

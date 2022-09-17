@@ -1,4 +1,4 @@
-import BaseRequest from '@/utils/repositories/request/BaseRequest'
+import BaseRequest from '@/utils/repositories/BaseRequest'
 
 export default class BaseModelRequest extends BaseRequest {
   getModelName() {

@@ -14,7 +14,7 @@ export default class RequestFactory {
   }
 }
 
-import PostRequest from '@/utils/repositories/request/PostRequest'
+import PostRequest from '@/utils/repositories/PostRequest'
 
 const requestMap: any = {
   PostRequest,
