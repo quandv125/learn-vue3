@@ -1,6 +1,6 @@
 const instances: any = {}
 export default class RequestFactory {
-  static getRequest(classname: any) {
+  static getRequest(classname: string) {
     const RequestClass = requestMap[classname]
     if (!RequestClass) {
       throw new Error('Invalid request class name: ' + classname)
@@ -17,5 +17,5 @@ export default class RequestFactory {
 import PostRequest from '@/utils/repositories/PostRequest'
 
 const requestMap: any = {
-    PostRequest
+  PostRequest,
 }
