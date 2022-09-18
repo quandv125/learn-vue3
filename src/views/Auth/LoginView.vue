@@ -57,7 +57,7 @@ const authStore = useAuthStore()
 
 const { user: authUser } = storeToRefs(authStore)
 
-const onSubmit = (values, { setErrors }) => {
+const onSubmit = (values: { username: string; password: string }, { setErrors }) => {
   const authStore = useAuthStore()
   const { username, password } = values
   return authStore.login(username, password).catch(error => setErrors({ apiError: error }))
