@@ -13,10 +13,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, key) in myData" :key="key">
+        <!-- <tr v-for="(item, key) in myData" :key="key">
           <td>{{ item.id }}</td>
           <td>{{ item.username }}</td>
-        </tr>
+        </tr> -->
 
         <tr v-for="(item, key) in purposes" :key="key">
           <td>{{ item.id }}</td>
@@ -27,7 +27,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue'
+import { defineComponent, reactive, computed } from 'vue'
 import { usePostHelper } from '@/helpers/usePostHelper' // (1)
 import rf from '@/utils/repositories'
 
@@ -35,12 +35,13 @@ export default defineComponent({
   name: 'App',
   data() {
     return {
-      purposes: [],
+      purposes: [] as any,
       submitted: false,
     }
   },
+
   setup() {
-    const myData = ref([])
+    const myData: any = reactive([])
     const { getItinerary, isEstimating } = usePostHelper() // (2)
     const estimating = computed(() => isEstimating()) // (2s)
 

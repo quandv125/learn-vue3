@@ -86,7 +86,7 @@ export default class BaseRequest {
   }
   // RESPONSE
   _responseHandler(resolve: any, res: any) {
-    return resolve(res.body.data)
+    return resolve(res.data)
   }
   // ERROR
   _errorHandler(reject: any, err: any) {
