@@ -1,11 +1,14 @@
 <template>
   <div>
     <div class="alert alert-info">
+      <p>
+        {{ $t('sign_in.messages.none_account', { value: 'This is an example of content translation' }) }}
+      </p>
       {{ $t('sign_in.input_text.username') }}: test<br />
       {{ $t('sign_in.input_text.password') }}: test
     </div>
     <h2>{{ $t('sign_in.title') }}</h2>
-    <Form @submit="onSubmit" :validation-schema="loginSchema" v-slot="{ errors, isSubmitting }">
+    <Form @submit="onHandleSubmit" :validation-schema="loginSchema" v-slot="{ errors, isSubmitting }">
       <div class="form-group">
         <label> {{ $t('sign_in.input_text.username') }} </label>
         <Field
@@ -32,9 +35,7 @@
       <div class="form-group">
         <button class="btn btn-primary" :disabled="isSubmitting">
           <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
-          <!-- {{ $t('message.value', { value: 'This is an example of content translation' }) }} -->
-          <!-- {{ $t('sign_in') }} -->
-          Login
+          {{ $t('sign_in.title') }}
         </button>
       </div>
       <div v-if="errors.apiError" class="alert alert-danger mt-3 mb-0">
@@ -44,26 +45,28 @@
     <h1 v-if="authUser">Hi {{ authUser.username }}!</h1>
   </div>
 </template>
+
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, reactive } from 'vue'
 import { storeToRefs } from 'pinia'
 import { Form, Field } from 'vee-validate'
 import { loginSchema } from '@/utils/validator'
 import { useAuthStore } from '@/utils/stores'
+import type { LoginType } from '@/utils/types'
 
-const form = ref({ username: 'quandv.125@gmail.com', password: 'abc12345@' })
+const form: LoginType = reactive({ username: 'quandv.125@gmail.com', password: 'abc12345@' })
 
 const authStore = useAuthStore()
 
 const { user: authUser } = storeToRefs(authStore)
 
-const onSubmit = (values: { username: string; password: string }, { setErrors }) => {
+const onHandleSubmit = async (values: any, { setErrors }: any) => {
   const authStore = useAuthStore()
   const { username, password } = values
-  return authStore.login(username, password).catch(error => setErrors({ apiError: error }))
+  return await authStore.login(username, password).catch(error => setErrors({ apiError: error }))
 }
 
 onMounted(() => {
-  // console.log('Component is mounted!', authStore.user)
+  console.log('Component is mounted!', authStore.user)
 })
 </script>

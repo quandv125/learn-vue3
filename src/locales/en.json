@@ -16,7 +16,7 @@
       "password": "Password"
     },
     "messages": {
-      "none_account": "Create new account",
+      "none_account": "Create new account {value} - ",
       "signup": "SignUp"
     }
   }
