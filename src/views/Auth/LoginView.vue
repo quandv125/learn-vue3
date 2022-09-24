@@ -50,7 +50,7 @@
 import { onMounted, reactive } from 'vue'
 import { storeToRefs } from 'pinia'
 import { Form, Field } from 'vee-validate'
-import { loginSchema } from '@/validator'
+import { loginSchema } from '@/utils/validator'
 import { useAuthStore } from '@/stores'
 import type { LoginType } from '@/types'
 
