@@ -20,7 +20,7 @@
           <br /><br />
           <button @click="showToast">showToast</button>
           <br /><br />
-          <input type="tel" v-mask="'###-####'" />
+          <input type="tel" v-maska="'###-####'" />
         </div>
       </nav>
     </div>
