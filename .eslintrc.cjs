@@ -32,6 +32,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'vue/no-multiple-template-root': 'off',
+    'vue/multi-word-component-names': 'off',
     '@typescript-eslint/no-explicit-any': ['off'],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
