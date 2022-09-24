@@ -3,8 +3,6 @@ import { createI18n } from 'vue-i18n'
 import vn from '@/locales/vn.json'
 import en from '@/locales/en.json'
 
-export const SUPPORT_LOCALES = ['en', 'vn']
-
 const language = localStorage.getItem('locale') || 'en'
 
 export const i18n: any = createI18n({

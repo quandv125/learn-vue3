@@ -1,11 +1,13 @@
 import { defineRule } from 'vee-validate'
+
 defineRule('required', (value: any) => {
   if (!value || !value.length) {
     return 'This field is required'
   }
   return true
 })
-defineRule('rules="required|email"', (value: any) => {
+
+defineRule('email', (value: any) => {
   // Field is empty, should pass
   if (!value || !value.length) {
     return true
