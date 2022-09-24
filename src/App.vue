@@ -19,6 +19,8 @@
           </select>
           <br /><br />
           <button @click="showToast">showToast</button>
+          <br /><br />
+          <input type="tel" v-mask="'###-####'" />
         </div>
       </nav>
     </div>
