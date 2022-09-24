@@ -1,2 +1,2 @@
-export * from '@/utils/stores/auth.store'
-export * from '@/utils/stores/users.store'
+export * from '@/stores/auth.store'
+export * from '@/stores/users.store'

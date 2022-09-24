@@ -1,4 +1,4 @@
-import BaseRequest from '@/utils/repositories/BaseRequest'
+import BaseRequest from '@/repositories/BaseRequest'
 
 export default class PostRequest extends BaseRequest {
   getData(url = '/users') {

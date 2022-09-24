@@ -1,4 +1,4 @@
-import rf from '@/utils/repositories'
+import rf from '@/repositories'
 
 export function usePostHelper() {
   const getItinerary = _fetchData

@@ -50,9 +50,9 @@
 import { onMounted, reactive } from 'vue'
 import { storeToRefs } from 'pinia'
 import { Form, Field } from 'vee-validate'
-import { loginSchema } from '@/utils/validator'
-import { useAuthStore } from '@/utils/stores'
-import type { LoginType } from '@/utils/types'
+import { loginSchema } from '@/validator'
+import { useAuthStore } from '@/stores'
+import type { LoginType } from '@/types'
 
 const form: LoginType = reactive({ username: 'quandv.125@gmail.com', password: 'abc12345@' })
 
