@@ -67,6 +67,7 @@ const onHandleSubmit = async (values: any, { setErrors }: any) => {
 }
 
 onMounted(() => {
+  console.log(import.meta.env.VITE_APP_NAME)
   console.log('Component is mounted!', authStore.user)
 })
 </script>
