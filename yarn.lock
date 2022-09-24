@@ -701,6 +701,11 @@
     "@typescript-eslint/types" "5.38.0"
     eslint-visitor-keys "^3.3.0"
 
+"@vee-validate/rules@^4.6.9":
+  version "4.6.9"
+  resolved "https://registry.yarnpkg.com/@vee-validate/rules/-/rules-4.6.9.tgz#db69a8f23d47c369fdb0d485055b262f3af17a5a"
+  integrity sha512-5iM7h+2UcunSOx0WJhqwP503CyPfjsOm/RR+PrYZnT8+iQl/C3tGV0hrXj/TrZ1NQXyp2qKi0m4n3bgsfMk4tg==
+
 "@vitejs/plugin-vue-jsx@^2.0.0":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@vitejs/plugin-vue-jsx/-/plugin-vue-jsx-2.0.1.tgz#563a844964f5b025c828b452d6a9882df7194f9a"
@@ -5810,11 +5815,6 @@ vue-router@^4.1.2:
   integrity sha512-IsvoF5D2GQ/EGTs/Th4NQms9gd2NSqV+yylxIyp/OYp8xOwxmU8Kj/74E9DTSYAyH5LX7idVUngN3JSj1X4xcQ==
   dependencies:
     "@vue/devtools-api" "^6.1.4"
-
-vue-the-mask@^0.11.1:
-  version "0.11.1"
-  resolved "https://registry.yarnpkg.com/vue-the-mask/-/vue-the-mask-0.11.1.tgz#91ee01008354ae57bccc79bb61b65f32d971d9d5"
-  integrity sha512-UquSfnSWejD0zAfcD+3jJ1chUAkOAyoxya9Lxh9acCRtrlmGcAIvd0cQYraWqKenbuZJUdum+S174atv2AuEHQ==
 
 vue-toastification@^2.0.0-rc.5:
   version "2.0.0-rc.5"
