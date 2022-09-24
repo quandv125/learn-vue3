@@ -1,4 +1,4 @@
-import axiosClient from '@/utils/config/axios'
+import axiosClient from '@/config/axios'
 
 export default class BaseRequest {
   // GET METHOD
