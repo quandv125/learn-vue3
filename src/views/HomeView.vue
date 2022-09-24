@@ -14,8 +14,9 @@
 </template>
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
-
 import { useAuthStore, useUsersStore } from '@/stores'
+import { useToast } from 'vue-toastification'
+const toast = useToast()
 
 const authStore = useAuthStore()
 const { user: authUser }: any = storeToRefs(authStore)
@@ -26,6 +27,7 @@ const { users }: any = storeToRefs(usersStore)
 usersStore.getAll()
 
 const logout = () => {
+  toast.success('Logout! 🎉')
   return authStore.logout()
 }
 </script>

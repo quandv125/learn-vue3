@@ -1,3 +1,4 @@
+@import 'vue-toastification/dist/index.css';
 @import "./base.css";
 
 #app {

@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import router from '@/router'
 import { fetchWrapper } from '@/helpers'
+import { useToast } from 'vue-toastification'
+const toast = useToast()
 
 const baseUrl = `${import.meta.env.VITE_API_URL}/users`
 
@@ -23,6 +25,9 @@ export const useAuthStore = defineStore({
 
       // store user details and jwt in local storage to keep user logged in between page refreshes
       localStorage.setItem('user', JSON.stringify(user))
+
+      // Notification
+      toast.info('Login Success')
 
       // redirect to previous url or default to home page
       router.push(this.returnUrl || '/')

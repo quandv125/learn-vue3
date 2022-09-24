@@ -17,6 +17,8 @@
               {{ locale }}
             </option>
           </select>
+          <br /><br />
+          <button @click="showToast">showToast</button>
         </div>
       </nav>
     </div>
@@ -31,9 +33,15 @@
 import AppLayout from '@/layouts/AppLayout.vue'
 import { RouterLink } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import { useToast } from 'vue-toastification'
+const toast = useToast()
 
 const changeLanguage = (e: any) => {
   localStorage.setItem('locale', e.target.value)
+}
+
+const showToast = () => {
+  toast.success('You did it! 🎉')
 }
 </script>
 
