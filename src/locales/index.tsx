@@ -11,6 +11,9 @@ export const i18n: any = createI18n({
   messages: { en, vn },
   lazy: true,
   parsePages: false,
+  silentTranslationWarn: true,
+  missingWarn: false,
+  fallbackWarn: false,
 })
 
 export function setupI18n(options = { locale: 'en' }) {

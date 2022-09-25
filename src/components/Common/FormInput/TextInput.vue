@@ -1,5 +1,5 @@
 <template>
-  <div class="TextInput" :class="{ 'has-error': !!errorMessage, success: meta.valid }">
+  <div class="FormInputMaster" :class="{ 'has-error': !!errorMessage, success: meta.valid }">
     <label :for="name">{{ label }}</label>
     <input
       :name="name"
@@ -7,20 +7,19 @@
       :type="type"
       :value="inputValue"
       :placeholder="placeholder"
+      :autocomplete="autocomplete"
       @input="handleChange"
       @blur="handleBlur"
     />
-    <!-- <transition name="slide"> -->
-    <p class="help-message" v-show="errorMessage || meta.valid">{{ errorMessage || successMessage }}</p>
-    <!-- <transition/> -->
+    <p class="help-message" v-show="errorMessage || meta.valid">
+      {{ $t(errorMessage || successMessage) }}
+    </p>
   </div>
 </template>
 
 <script setup lang="ts">
 import { toRef } from 'vue'
 import { useField } from 'vee-validate'
-// import { useI18n } from 'vue-i18n'
-// const t = useI18n()
 
 const props = defineProps({
   type: {
@@ -47,6 +46,10 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  autocomplete: {
+    type: String,
+    default: '',
+  },
 })
 
 const name = toRef(props, 'name')
@@ -63,7 +66,7 @@ const {
 </script>
 
 <style scoped>
-.TextInput {
+.FormInputMaster {
   position: relative;
   margin-bottom: calc(1em * 1.5);
   width: 100%;
@@ -97,29 +100,29 @@ input:focus {
   font-size: 14px;
 }
 
-.TextInput.has-error input {
+.FormInputMaster.has-error input {
   background-color: var(--error-bg-color);
   color: var(--error-color);
 }
 
-.TextInput.has-error input:focus {
+.FormInputMaster.has-error input:focus {
   border-color: var(--error-color);
 }
 
-.TextInput.has-error .help-message {
+.FormInputMaster.has-error .help-message {
   color: var(--error-color);
 }
 
-.TextInput.success input {
+.FormInputMaster.success input {
   background-color: var(--success-bg-color);
   color: var(--success-color);
 }
 
-.TextInput.success input:focus {
+.FormInputMaster.success input:focus {
   border-color: var(--success-color);
 }
 
-.TextInput.success .help-message {
+.FormInputMaster.success .help-message {
   color: var(--success-color);
 }
 </style>

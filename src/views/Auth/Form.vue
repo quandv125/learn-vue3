@@ -25,10 +25,10 @@ const schema = Yup.object().shape({
 })
 
 const formValues = {
-  name: 'quan',
-  email: 'quan@example.com',
-  password: '123123',
-  confirm_password: '123123',
+  name: '',
+  email: '',
+  password: '',
+  confirm_password: '',
 }
 </script>
 
@@ -55,6 +55,7 @@ const formValues = {
         type="password"
         label="Password"
         :value="formValues.password"
+        autocomplete="password"
         placeholder="Your password"
         success-message="Nice and secure!"
       />
@@ -62,6 +63,7 @@ const formValues = {
         name="confirm_password"
         type="password"
         label="Confirm Password"
+        autocomplete="confirm_password"
         placeholder="Type it again"
         success-message="Glad you remembered it!"
       />
@@ -72,78 +74,9 @@ const formValues = {
 </template>
 
 <style>
-:root {
-  --primary-color: #0071fe;
-  --error-color: #f23648;
-  --error-bg-color: #fddfe2;
-  --success-color: #21a67a;
-  --success-bg-color: #e0eee4;
-}
-
 form {
   width: 300px;
   margin: 0px auto;
   padding-bottom: 60px;
-}
-
-.submit-btn {
-  background: var(--primary-color);
-  outline: none;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  padding: 10px 15px;
-  display: block;
-  width: 100%;
-  border-radius: 7px;
-  margin-top: 40px;
-  transition: transform 0.3s ease-in-out;
-  cursor: pointer;
-}
-
-.submit-btn.invalid {
-  animation: shake 0.5s;
-  /* When the animation is finished, start again */
-  animation-iteration-count: infinite;
-}
-
-@keyframes shake {
-  0% {
-    transform: translate(1px, 1px);
-  }
-  10% {
-    transform: translate(-1px, -2px);
-  }
-  20% {
-    transform: translate(-3px, 0px);
-  }
-  30% {
-    transform: translate(3px, 2px);
-  }
-  40% {
-    transform: translate(1px, -1px);
-  }
-  50% {
-    transform: translate(-1px, 2px);
-  }
-  60% {
-    transform: translate(-3px, 1px);
-  }
-  70% {
-    transform: translate(3px, 1px);
-  }
-  80% {
-    transform: translate(-1px, -1px);
-  }
-  90% {
-    transform: translate(1px, 2px);
-  }
-  100% {
-    transform: translate(1px, -2px);
-  }
-}
-
-.submit-btn:hover {
-  transform: scale(1.1);
 }
 </style>
