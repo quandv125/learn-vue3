@@ -1,6 +1,9 @@
 <template>
   <div>
     <h1>Form Component Sample</h1>
+
+    <RouterLink to="/">Back to home</RouterLink>
+
     <Form @submit="onSubmit" :validation-schema="schema" @invalid-submit="onInvalidSubmit">
       <TextInput
         name="name"
