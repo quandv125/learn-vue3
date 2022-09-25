@@ -10,6 +10,10 @@
     <div v-if="users.error" class="text-danger">Error loading users: {{ users.error }}</div>
 
     <button @click="logout">Logout</button>
+
+    <br /><br /><br />
+
+    <router-link to="/form">Go to form</router-link>
   </div>
 </template>
 <script setup lang="ts">
