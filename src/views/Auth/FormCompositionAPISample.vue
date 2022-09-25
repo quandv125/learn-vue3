@@ -27,20 +27,24 @@ import { ref, reactive } from 'vue'
 import { useForm } from 'vee-validate'
 import TextInput from '@/components/Common/FormInput/TextInput.vue'
 import { loginSchema } from '@/utils/validator'
+import type { LoginType } from '@/types'
 
+// Ref
 const submitClass = ref('')
 const initValue = reactive({
-  username: 'quan.duong@tda.company',
+  username: '',
   password: '',
-}) as { username: string; password: string }
+}) as LoginType
 
-const { handleSubmit, errors } = useForm({
+// Method
+const { handleSubmit, errors, resetForm } = useForm({
   validationSchema: loginSchema,
   initialValues: initValue,
 })
 
-const onHandleSubmit = handleSubmit(values => {
+const onHandleSubmit = handleSubmit((values: LoginType) => {
   console.log(values)
+  resetForm({ values: initValue })
 }, onInvalidSubmit)
 
 function onInvalidSubmit() {
@@ -51,7 +55,7 @@ function onInvalidSubmit() {
   submitClass.value = 'invalid'
   setTimeout(() => {
     submitClass.value = ''
-  }, 1000)
+  }, 500)
 }
 </script>
 <!-- Style -->
