@@ -1,5 +1,8 @@
 <template>
   <div>
+    <p>
+      {{ $t('message.hello') }}
+    </p>
     <h1>Hi {{ authUser?.firstName }}!</h1>
     <p>You're logged in with Vue 3 + Pinia & JWT!!</p>
     <h3>Users from secure api end point:</h3>

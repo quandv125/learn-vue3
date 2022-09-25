@@ -1,6 +1,6 @@
 {
   "message": {
-    "hello": "hello world EN"
+    "hello": "Hello"
   },
   "common": {
     "select_lang": "Hello, change language"
