@@ -1,37 +1,3 @@
-<script setup lang="ts">
-import { Form } from 'vee-validate'
-import * as Yup from 'yup'
-import TextInput from '@/components/Common/FormInput/TextInput.vue'
-
-const onSubmit = (values: any) => {
-  alert(JSON.stringify(values, null, 2))
-}
-
-const onInvalidSubmit = () => {
-  const submitBtn: any = document.querySelector('.submit-btn')
-  submitBtn.classList.add('invalid')
-  setTimeout(() => {
-    submitBtn.classList.remove('invalid')
-  }, 1000)
-}
-
-const schema = Yup.object().shape({
-  name: Yup.string().required('Name is required!'),
-  email: Yup.string().email().required(),
-  password: Yup.string().min(6, ' password must be at least 6 characters').required(),
-  confirm_password: Yup.string()
-    .required()
-    .oneOf([Yup.ref('password')], 'Passwords do not match'),
-})
-
-const formValues = {
-  name: '',
-  email: '',
-  password: '',
-  confirm_password: '',
-}
-</script>
-
 <template>
   <div>
     <Form @submit="onSubmit" :validation-schema="schema" @invalid-submit="onInvalidSubmit">
@@ -72,7 +38,41 @@ const formValues = {
     </Form>
   </div>
 </template>
+<!-- Script -->
+<script setup lang="ts">
+import { Form } from 'vee-validate'
+import * as Yup from 'yup'
+import TextInput from '@/components/Common/FormInput/TextInput.vue'
 
+const onSubmit = (values: any) => {
+  alert(JSON.stringify(values, null, 2))
+}
+
+const onInvalidSubmit = () => {
+  const submitBtn: any = document.querySelector('.submit-btn')
+  submitBtn.classList.add('invalid')
+  setTimeout(() => {
+    submitBtn.classList.remove('invalid')
+  }, 1000)
+}
+
+const schema = Yup.object().shape({
+  name: Yup.string().required('Name is required!'),
+  email: Yup.string().email().required(),
+  password: Yup.string().min(6, ' password must be at least 6 characters').required(),
+  confirm_password: Yup.string()
+    .required()
+    .oneOf([Yup.ref('password')], 'Passwords do not match'),
+})
+
+const formValues = {
+  name: '',
+  email: '',
+  password: '',
+  confirm_password: '',
+}
+</script>
+<!-- Style -->
 <style>
 form {
   width: 300px;

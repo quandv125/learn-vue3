@@ -43,6 +43,10 @@
       </div>
     </Form>
     <h1 v-if="authUser">Hi {{ authUser.username }}!</h1>
+    <br />
+    <div>
+      <router-link to="/register"> Register </router-link>
+    </div>
   </div>
 </template>
 
