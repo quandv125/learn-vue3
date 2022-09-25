@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Form Component Sample</h1>
     <Form @submit="onSubmit" :validation-schema="schema" @invalid-submit="onInvalidSubmit">
       <TextInput
         name="name"
@@ -34,7 +35,7 @@
         success-message="Glad you remembered it!"
       />
 
-      <button class="submit-btn" type="submit">Submit</button>
+      <Button />
     </Form>
   </div>
 </template>
@@ -43,6 +44,7 @@
 import { Form } from 'vee-validate'
 import * as Yup from 'yup'
 import TextInput from '@/components/Common/FormInput/TextInput.vue'
+import Button from '@/components/Common/FormInput/Button.vue'
 
 const onSubmit = (values: any) => {
   alert(JSON.stringify(values, null, 2))

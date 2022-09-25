@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Form Composition Api</h1>
     <pre>{{ errors }}</pre>
 
     <form @submit.prevent="onHandleSubmit">
