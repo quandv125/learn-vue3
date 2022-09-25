@@ -1,7 +1,6 @@
 import axios from 'axios'
 
-const baseDomain = 'https://jsonplaceholder.typicode.com'
-const baseURL = `${baseDomain}` // Incase of /api/v1;
+const baseURL = `${import.meta.env.BASE_DOMAIN || 'https://jsonplaceholder.typicode.com'}` // Incase of /api/v1;
 
 const token = localStorage.getItem('token') || ''
 
