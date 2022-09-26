@@ -20,6 +20,7 @@
       />
       <button :class="`submit-btn ${submitClass}`" type="submit">Submit</button>
     </form>
+    <success/>
   </div>
 </template>
 <!-- Script -->
@@ -29,6 +30,7 @@ import { useForm } from 'vee-validate'
 import TextInput from '@/components/Common/FormInput/TextInput.vue'
 import { loginSchema } from '@/utils/validator'
 import type { LoginType } from '@/types'
+import Success from '@/components/Common/Messages/Success.vue'
 
 // Ref
 const submitClass = ref('')
