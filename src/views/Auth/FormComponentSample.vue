@@ -65,7 +65,7 @@ const PAYMENT_METHODS = [
   { value: 'combini_payment', text: 'combini_payment' }
 ]
 
-const onSubmit = (values: {name: string, email: string, password: string, status: string}) => {
+const onSubmit = (values: any) => {
   alert(JSON.stringify(values, null, 2))
 }
 

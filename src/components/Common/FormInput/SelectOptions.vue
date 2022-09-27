@@ -2,11 +2,11 @@
   <div class="FormInputMaster" :class="{ 'has-error': !!errorMessage, success: meta.valid }">
     <label :for="name">{{ label }}</label>
     <!-- Array -->
-    <select v-if="Array.isArray(options)"
+    <select
+      v-if="Array.isArray(options)"
       :id="name"
-      :type="type"
       :value="inputValue"
-      @change="$emit('update:modelValue', $event.target.value)"
+      @change="onHandleChange"
       @input="handleChange"
       @blur="handleBlur"
     >
@@ -16,14 +16,7 @@
     </select>
 
     <!-- Object -->
-    <select v-else
-      :id="name"
-      :type="type"
-      :value="inputValue"
-      @change="$emit('update:modelValue', $event.target.value)"
-      @input="handleChange"
-      @blur="handleBlur"
-    >
+    <select v-else :id="name" :value="inputValue" @change="onHandleChange" @input="handleChange" @blur="handleBlur">
       <option v-for="(text, val) in options" :key="val" :value="val">
         {{ text }}
       </option>
@@ -37,6 +30,7 @@
 <script setup lang="ts">
 import { defineProps, toRef } from 'vue'
 import { useField } from 'vee-validate'
+const emit: any = defineEmits()
 
 const props = defineProps({
   value: {
@@ -61,9 +55,9 @@ const props = defineProps({
     default: 'Good job!',
   }
 })
-
+// Ref
 const name = toRef(props, 'name')
-
+// Method
 const {
   value: inputValue,
   errorMessage,
@@ -71,6 +65,12 @@ const {
   handleChange,
   meta,
 } = useField(name, undefined, { initialValue: props.value })
+
+const onHandleChange = (event: any) => {
+  const {value} = event.target
+  emit('update:modelValue', value)
+}
+
 </script>
 
 <style scoped>

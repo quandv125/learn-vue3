@@ -8,7 +8,7 @@
       :value="inputValue"
       :placeholder="placeholder"
       :autocomplete="autocomplete"
-      @change="$emit('update:modelValue', $event.target.value)"
+      @change="onHandleChange"
       @input="handleChange"
       @blur="handleBlur"
     />
@@ -21,6 +21,7 @@
 <script setup lang="ts">
 import { defineProps, toRef } from 'vue'
 import { useField } from 'vee-validate'
+const emit: any = defineEmits()
 
 const props = defineProps({
   type: {
@@ -52,9 +53,10 @@ const props = defineProps({
     default: '',
   },
 })
-
+// Ref
 const name = toRef(props, 'name')
 
+// Method
 const {
   value: inputValue,
   errorMessage,
@@ -62,6 +64,12 @@ const {
   handleChange,
   meta,
 } = useField(name, undefined, { initialValue: props.value })
+
+const onHandleChange = (event: any) => {
+  const {value} = event.target
+  emit('update:modelValue', value)
+}
+
 </script>
 
 <style scoped>
