@@ -12,6 +12,8 @@ export const postCodeRegex = /^\d{3}[-]\d{4}$|^\d{3}[-]\d{2}$|^\d{3}$|^\d{5}$|^\
 
 export const birthdayRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
+export const urlRegex = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n\?\=]+)/im
+
 /** Password rules: 
  - At least one upper case English letter, (?=.*?[A-Z]) 
  - At least one lower case English letter, (?=.*?[a-z])
