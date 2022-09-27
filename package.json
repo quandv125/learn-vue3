@@ -13,11 +13,12 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@intlify/vite-plugin-vue-i18n": "^6.0.2",
     "@types/qs": "^6.9.7",
     "@types/vue-the-mask": "^0.11.1",
     "@vee-validate/rules": "^4.6.9",
     "axios": "^0.27.2",
-    "dayjs": "^1.11.4",
+    "dayjs": "^1.11.5",
     "dotenv": "^16.0.1",
     "lodash": "^4.17.21",
     "maska": "^1.5.0",

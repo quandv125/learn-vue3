@@ -1,8 +1,7 @@
 <template>
-  <div>
+  <div class="default_layout">
     <header>
       <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
       <div class="wrapper">
         <HelloWorld msg="You did it!" />
         <h1 id="test">
@@ -27,7 +26,6 @@
       </div>
     </header>
     <div class="p-4">
-      <span>default</span>
       <div class="container">
         <slot />
       </div>

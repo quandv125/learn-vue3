@@ -12,7 +12,7 @@ const router = createRouter({
       component: LoginView,
       meta: {
         requiresAuth: false,
-        layout: 'AuthLayout',
+        layout: 'BlankLayout',
       },
     },
     {
@@ -37,7 +37,7 @@ const router = createRouter({
       component: () => import('@/views/Auth/FormComponentSample.vue'),
       meta: {
         requiresAuth: false,
-        layout: 'AuthLayout',
+        layout: 'BlankLayout',
       },
     },
     {
@@ -46,7 +46,7 @@ const router = createRouter({
       component: () => import('@/views/Auth/FormCompositionAPISample.vue'),
       meta: {
         requiresAuth: false,
-        layout: 'AuthLayout',
+        layout: 'BlankLayout',
       },
     },
     // 404
@@ -56,7 +56,7 @@ const router = createRouter({
       component: () => import('@/views/Error/NotFound.vue'),
       meta: {
         requiresAuth: false,
-        layout: 'AuthLayout',
+        layout: 'BlankLayout',
       },
     },
     {
@@ -65,7 +65,7 @@ const router = createRouter({
       component: () => import('@/views/Error/Forbidden.vue'),
       meta: {
         requiresAuth: false,
-        layout: 'AuthLayout',
+        layout: 'BlankLayout',
       },
     },
   ],

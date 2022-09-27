@@ -60,9 +60,7 @@ const {
   handleBlur,
   handleChange,
   meta,
-} = useField(name, undefined, {
-  initialValue: props.value,
-})
+} = useField(name, undefined, { initialValue: props.value })
 </script>
 
 <style scoped>
