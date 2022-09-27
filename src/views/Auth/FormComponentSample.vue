@@ -9,6 +9,7 @@
         name="name"
         type="text"
         label="Full Name"
+        :value="formValues.name"
         placeholder="Your Name"
         success-message="Nice to meet you!"
       />
@@ -33,9 +34,16 @@
         name="confirm_password"
         type="password"
         label="Confirm Password"
+        :value="formValues.password"
         autocomplete="confirm_password"
         placeholder="Type it again"
         success-message="Glad you remembered it!"
+      />
+     
+      <SelectOptions
+        name="status"
+        :value="formValues.status"
+        :options="PAYMENT_METHODS"
       />
 
       <Button />
@@ -48,8 +56,20 @@
 import { Form } from 'vee-validate'
 import * as Yup from 'yup'
 import TextInput from '@/components/Common/FormInput/TextInput.vue'
+import SelectOptions from '@/components/Common/FormInput/SelectOptions.vue'
 import Button from '@/components/Common/FormInput/Button.vue'
 import Errors from '@/components/Common/Messages/Errors.vue'
+
+
+const PAYMENT_METHODS = [
+  { value: '', text: 'Null' },
+  { value: 'cash', text: 'cash' },
+  { value: 'bank_transfer', text: 'bank_transfer' },
+  { value: 'bank_withdraw', text: 'bank_withdraw' },
+  { value: 'credit_card', text: 'credit_card' },
+  { value: 'combini_payment', text: 'combini_payment' }
+]
+
 const onSubmit = (values: any) => {
   alert(JSON.stringify(values, null, 2))
 }
@@ -66,16 +86,16 @@ const schema = Yup.object().shape({
   name: Yup.string().required('Name is required!'),
   email: Yup.string().email().required(),
   password: Yup.string().min(6, ' password must be at least 6 characters').required(),
-  confirm_password: Yup.string()
-    .required()
-    .oneOf([Yup.ref('password')], 'Passwords do not match'),
+  confirm_password: Yup.string().required().oneOf([Yup.ref('password')], 'Passwords do not match'),
+  status: Yup.string().required()  
 })
 
 const formValues = {
-  name: '',
-  email: '',
-  password: '',
-  confirm_password: '',
+  name: 'test',
+  email: 'quandv.125@gmail.com',
+  password: '123123123',
+  confirm_password: '123123123',
+  status: ''
 }
 </script>
 <!-- Style -->

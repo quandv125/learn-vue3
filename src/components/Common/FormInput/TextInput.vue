@@ -8,6 +8,7 @@
       :value="inputValue"
       :placeholder="placeholder"
       :autocomplete="autocomplete"
+      @change="$emit('update:modelValue', $event.target.value)"
       @input="handleChange"
       @blur="handleBlur"
     />
@@ -40,7 +41,7 @@ const props = defineProps({
   },
   successMessage: {
     type: String,
-    default: '',
+    default: 'Good job!',
   },
   placeholder: {
     type: String,
