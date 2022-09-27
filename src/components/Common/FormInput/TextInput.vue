@@ -13,7 +13,7 @@
       @blur="handleBlur"
     />
     <p class="help-message" v-show="errorMessage || meta.valid">
-      {{ $t(errorMessage || successMessage, {value: name}) }}
+      {{ $t(errorMessage || successMessage, { value: name }) }}
     </p>
   </div>
 </template>
@@ -21,7 +21,10 @@
 <script setup lang="ts">
 import { defineProps, toRef } from 'vue'
 import { useField } from 'vee-validate'
-const emit: any = defineEmits()
+
+const emit = defineEmits<{
+  (event: 'update:modelValue', modelValue: string): void
+}>()
 
 const props = defineProps({
   type: {
@@ -66,10 +69,8 @@ const {
 } = useField(name, undefined, { initialValue: props.value })
 
 const onHandleChange = (event: any) => {
-  const {value} = event.target
-  emit('update:modelValue', value)
+  emit('update:modelValue', event.target.value)
 }
-
 </script>
 
 <style scoped>
