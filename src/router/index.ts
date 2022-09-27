@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { HomeView, LoginView } from '@/views'
 import { useAuthStore } from '@/stores'
+import { auth } from '@/middleware'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
