@@ -46,21 +46,15 @@
         :options="PAYMENT_METHODS"
       />
 
-      <Button />
-      <errors />
+      <ButtonCustom />
+      <ErrorCustom />
     </Form>
   </div>
 </template>
 <!-- Script -->
 <script setup lang="ts">
 import { Form } from 'vee-validate'
-import * as Yup from 'yup'
-import TextInput from '@/components/Common/FormInput/TextInput.vue'
-import SelectOptions from '@/components/Common/FormInput/SelectOptions.vue'
-import Button from '@/components/Common/FormInput/Button.vue'
-import Errors from '@/components/Common/Messages/Errors.vue'
 import { formComponentSampleSchema } from '@/utils/validator'
-
 
 const PAYMENT_METHODS = [
   { value: '', text: 'Null' },
@@ -71,7 +65,7 @@ const PAYMENT_METHODS = [
   { value: 'combini_payment', text: 'combini_payment' }
 ]
 
-const onSubmit = (values: any) => {
+const onSubmit = (values: {name: string, email: string, password: string, status: string}) => {
   alert(JSON.stringify(values, null, 2))
 }
 

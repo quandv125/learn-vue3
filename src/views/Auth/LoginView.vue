@@ -64,7 +64,7 @@ const authStore = useAuthStore()
 
 const { user: authUser } = storeToRefs(authStore)
 
-const onHandleSubmit = async (values: any, { setErrors }: any) => {
+const onHandleSubmit = async (values: LoginType, { setErrors }: any) => {
   const authStore = useAuthStore()
   const { username, password } = values
   return await authStore.login(username, password).catch(error => setErrors({ apiError: error }))

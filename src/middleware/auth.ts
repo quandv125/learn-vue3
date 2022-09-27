@@ -1,5 +1,5 @@
 import { useAuthStore } from '@/stores'
-export default (to, from, next) => {
+export default (to: any, from: any, next: any) => {
   const auth = useAuthStore()
   if(!!auth.user){
     next({ name: 'Login' });
