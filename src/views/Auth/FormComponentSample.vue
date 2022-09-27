@@ -4,7 +4,7 @@
 
     <RouterLink to="/">Back to home</RouterLink>
 
-    <Form @submit="onSubmit" :validation-schema="schema" @invalid-submit="onInvalidSubmit">
+    <Form @submit="onSubmit" :validation-schema="formComponentSampleSchema" @invalid-submit="onInvalidSubmit">
       <TextInput
         name="name"
         type="text"
@@ -59,6 +59,7 @@ import TextInput from '@/components/Common/FormInput/TextInput.vue'
 import SelectOptions from '@/components/Common/FormInput/SelectOptions.vue'
 import Button from '@/components/Common/FormInput/Button.vue'
 import Errors from '@/components/Common/Messages/Errors.vue'
+import { formComponentSampleSchema } from '@/utils/validator'
 
 
 const PAYMENT_METHODS = [
@@ -82,17 +83,9 @@ const onInvalidSubmit = () => {
   }, 1000)
 }
 
-const schema = Yup.object().shape({
-  name: Yup.string().required('Name is required!'),
-  email: Yup.string().email().required(),
-  password: Yup.string().min(6, ' password must be at least 6 characters').required(),
-  confirm_password: Yup.string().required().oneOf([Yup.ref('password')], 'Passwords do not match'),
-  status: Yup.string().required()  
-})
-
 const formValues = {
   name: 'test',
-  email: 'quandv.125@gmail.com',
+  email: 'quandv@gmail.com',
   password: '123123123',
   confirm_password: '123123123',
   status: ''

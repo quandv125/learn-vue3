@@ -29,7 +29,7 @@
       </option>
     </select>
     <p class="help-message" v-show="errorMessage || meta.valid">
-      {{ $t(errorMessage || successMessage) }}
+      {{ $t(errorMessage || successMessage, {value: name}) }}
     </p>
   </div>
 </template>
