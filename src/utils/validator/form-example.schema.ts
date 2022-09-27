@@ -7,7 +7,7 @@ export const formComponentSampleSchema = Yup.object().shape({
   email: Yup.string().email().required(),
   password: Yup.string().min(6, ' password must be at least 6 characters').required(),
   confirm_password: Yup.string().required().oneOf([Yup.ref('password')], 'Passwords do not match'),
-  status: Yup.string().required(['message.hello'])  // key of multi-language
+  status: Yup.string().required('message.hello')  // key of multi-language
 })
 
 export const ExampleSchema = Yup.object().shape({
