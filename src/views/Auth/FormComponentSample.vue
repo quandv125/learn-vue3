@@ -39,12 +39,8 @@
         placeholder="Type it again"
         success-message="Glad you remembered it!"
       />
-     
-      <SelectOptions
-        name="status"
-        :value="formValues.status"
-        :options="PAYMENT_METHODS"
-      />
+
+      <SelectOptions name="status" :value="formValues.status" :options="PAYMENT_METHODS" />
 
       <ButtonCustom />
       <ErrorCustom />
@@ -62,7 +58,7 @@ const PAYMENT_METHODS = [
   { value: 'bank_transfer', text: 'bank_transfer' },
   { value: 'bank_withdraw', text: 'bank_withdraw' },
   { value: 'credit_card', text: 'credit_card' },
-  { value: 'combini_payment', text: 'combini_payment' }
+  { value: 'combini_payment', text: 'combini_payment' },
 ]
 
 const onSubmit = (values: any) => {
@@ -82,7 +78,7 @@ const formValues = {
   email: 'quandv@gmail.com',
   password: '123123123',
   confirm_password: '123123123',
-  status: ''
+  status: '',
 }
 </script>
 <!-- Style -->

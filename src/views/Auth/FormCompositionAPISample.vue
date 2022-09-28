@@ -20,7 +20,7 @@
       />
       <button :class="`submit-btn ${submitClass}`" type="submit">Submit</button>
     </form>
-    <success/>
+    <Success />
   </div>
 </template>
 <!-- Script -->

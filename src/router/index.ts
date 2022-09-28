@@ -1,12 +1,48 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { HomeView, LoginView } from '@/views'
+import {
+  HomeView,
+  LoginView,
+  AboutView,
+  FormComponentSample,
+  FormCompositionAPISample,
+  NotFound,
+  Forbidden,
+} from '@/views'
 import { useAuthStore } from '@/stores'
-import { auth } from '@/middleware'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   linkActiveClass: 'active',
   routes: [
+    {
+      path: '/',
+      redirect: '/home',
+    },
+    {
+      path: '/home',
+      name: 'Home',
+      component: HomeView,
+      meta: {
+        requiresAuth: true,
+      },
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: AboutView,
+      meta: {
+        requiresAuth: false,
+      },
+    },
+    {
+      path: '/form',
+      name: 'Form',
+      component: FormComponentSample,
+      meta: {
+        requiresAuth: false,
+        layout: 'BlankLayout',
+      },
+    },
     {
       path: '/login',
       name: 'Login',
@@ -17,44 +53,9 @@ const router = createRouter({
       },
     },
     {
-      path: '/',
-      name: 'Home',
-      component: HomeView,
-      meta: {
-        requiresAuth: true,
-      },
-    },
-    {
-      path: '/about',
-      name: 'About',
-      component: () => import('@/views/AboutView.vue'),
-      meta: {
-        requiresAuth: false,
-      },
-    },
-    {
-      path: '/form',
-      name: 'Form',
-      component: () => import('@/views/Auth/FormComponentSample.vue'),
-      meta: {
-        requiresAuth: false,
-        layout: 'BlankLayout',
-      },
-    },
-    {
       path: '/register',
       name: 'Register',
-      component: () => import('@/views/Auth/FormCompositionAPISample.vue'),
-      meta: {
-        requiresAuth: false,
-        layout: 'BlankLayout',
-      },
-    },
-    // 404
-    {
-      path: '/404',
-      name: 'NotFound',
-      component: () => import('@/views/Error/NotFound.vue'),
+      component: FormCompositionAPISample,
       meta: {
         requiresAuth: false,
         layout: 'BlankLayout',
@@ -63,7 +64,16 @@ const router = createRouter({
     {
       path: '/403',
       name: 'Forbidden',
-      component: () => import('@/views/Error/Forbidden.vue'),
+      component: Forbidden,
+      meta: {
+        requiresAuth: false,
+        layout: 'BlankLayout',
+      },
+    },
+    {
+      path: '/:catchAll(.*)*',
+      name: 'NotFound',
+      component: NotFound,
       meta: {
         requiresAuth: false,
         layout: 'BlankLayout',
