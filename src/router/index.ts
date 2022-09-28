@@ -84,16 +84,13 @@ const router = createRouter({
 
 router.beforeEach(async (to, from, next) => {
   const auth = useAuthStore()
-
   if (to.name === 'Login' && auth.user) {
     const name = from.name || ''
     next({ name })
   }
-
   if (to.matched.some(record => record.meta.requiresAuth) && !auth.user) {
     next({ name: 'Login' })
   }
-
   next()
 })
 

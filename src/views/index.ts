@@ -1,6 +1,6 @@
 export { default as HomeView } from '@/views/HomeView.vue'
+export { default as AboutView } from '@/views/AboutView.vue'
 export { default as LoginView } from '@/views/Auth/LoginView.vue'
-export { default as AboutView } from '@/views/Auth/About.vue'
 export { default as FormComponentSample } from '@/views/Auth/FormComponentSample.vue'
 export { default as FormCompositionAPISample } from '@/views/Auth/FormCompositionAPISample.vue'
 export { default as NotFound } from '@/views/Error/NotFound.vue'
