@@ -33,7 +33,6 @@ axios.interceptors.response.use(
   async error => {
     const originalRequest = error.config
     originalRequest._retryCount = ++originalRequest._retryCount || 1
-
     if (originalRequest._retryCount < 3) {
       const forceAuthenticationPopup: boolean = [401, 403].includes(error?.response?.status)
       const newToken = await getRefreshToken(forceAuthenticationPopup)
@@ -41,13 +40,12 @@ axios.interceptors.response.use(
       axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`
       return axios(originalRequest)
     }
-
     return Promise.reject(error)
   }
 )
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const getRefreshToken = (forceAuthenticationPopup: boolean) => {
+const getRefreshToken = (_forceAuthenticationPopup: boolean) => {
   // call api for get new token
   return 'ok123'
 }

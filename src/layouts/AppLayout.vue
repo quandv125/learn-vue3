@@ -19,7 +19,6 @@ watch(
   { immediate: true }
 )
 </script>
-
 <template>
   <component :is="layout">
     <router-view />
