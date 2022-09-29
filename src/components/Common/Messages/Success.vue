@@ -11,10 +11,8 @@
           </button>
         </li>
         <li>
-          <router-link to="/"> 
-            <button class="grayBtn">
-              Back To Home 
-            </button>
+          <router-link to="/">
+            <button class="grayBtn">Back To Home</button>
           </router-link>
         </li>
       </ul>

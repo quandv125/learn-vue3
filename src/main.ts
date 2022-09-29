@@ -23,12 +23,13 @@ import Errors from '@/components/Common/Messages/Errors.vue'
 const app = createApp(App)
 
 // Global Registration
-app.component('TextInput', TextInput)
-.component('SelectOptions', SelectOptions)
-.component('Radio', Radio)
-.component('Checkbox', Checkbox)
-.component('ButtonCustom', Button)
-.component('ErrorCustom', Errors)
+app
+  .component('TextInput', TextInput)
+  .component('SelectOptions', SelectOptions)
+  .component('Radio', Radio)
+  .component('Checkbox', Checkbox)
+  .component('ButtonCustom', Button)
+  .component('ErrorCustom', Errors)
 
 app.use(createPinia())
 app.use(router)

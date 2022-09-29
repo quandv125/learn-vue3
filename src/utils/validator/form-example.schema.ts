@@ -1,20 +1,21 @@
 import * as Yup from 'yup'
-import {emailRegex} from '@/constants/common'
-
+import { emailRegex } from '@/constants/common'
 
 export const formComponentSampleSchema = Yup.object().shape({
   name: Yup.string().required('Name is required!'),
   email: Yup.string().email().required(),
   password: Yup.string().min(6, ' password must be at least 6 characters').required(),
-  confirm_password: Yup.string().required().oneOf([Yup.ref('password')], 'Passwords do not match'),
-  status: Yup.string().required('message.hello')  // key of multi-language
+  confirm_password: Yup.string()
+    .required()
+    .oneOf([Yup.ref('password')], 'Passwords do not match'),
+  status: Yup.string().required('message.hello'), // key of multi-language
 })
 
 export const ExampleSchema = Yup.object().shape({
   title: Yup.string().required('Title is required'),
   firstName: Yup.string().required('First Name is required'),
   lastName: Yup.string().required('Last name is required'),
-  email: Yup.string().matches(emailRegex,'email error message').required(),
+  email: Yup.string().matches(emailRegex, 'email error message').required(),
   //email: Yup.string().required('Email is required').email('Email is invalid'),
   dob: Yup.string()
     .required('Date of Birth is required')

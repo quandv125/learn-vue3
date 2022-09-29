@@ -1,4 +1,4 @@
-
+/* eslint-disable no-useless-escape */
 // Start Regex
 export const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/
 
