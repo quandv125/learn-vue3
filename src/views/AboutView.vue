@@ -18,7 +18,6 @@
         </tr>
       </tbody>
     </table>
-
     <button class="grayBtn" @click="$router.push('/')">HOME</button>
   </div>
 </template>
@@ -26,9 +25,11 @@
 <script setup lang="ts">
 import { onMounted, computed, ref } from 'vue'
 import { usePostHelper } from '@/helpers/usePostHelper' // (1)
+import type { ResItemType } from '@/types/fetchApi.type'
+
 // Data
 const { getItinerary, isEstimating } = usePostHelper() // (2)
-const myData = ref({})
+const myData = ref<ResItemType[]>([])
 // computed
 const estimating = computed(() => isEstimating()) // (2s)
 // method

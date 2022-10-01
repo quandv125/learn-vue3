@@ -12,8 +12,8 @@ export function usePostHelper() {
 //   return rf.getRequest('PostRequest').getData()
 // }
 
-const _fetchData = async () => {
-  return await rf.getRequest('PostRequest').getData()
+const _fetchData = () => {
+  return rf.getRequest('PostRequest').getData()
 }
 
 function isEstimating() {
