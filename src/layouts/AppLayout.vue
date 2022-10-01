@@ -16,7 +16,7 @@ watch(
       layout.value = markRaw(defaultLayout)
     }
   },
-  { immediate: true }
+  { immediate: true },
 )
 </script>
 <template>

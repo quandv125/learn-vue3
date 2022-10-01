@@ -24,6 +24,25 @@
           </div>
         </nav>
       </div>
+      <!-- Menu -->
+      <ul>
+        <li v-for="(menu, key) in SIDEBAR_MENU" :key="key">
+          <span v-if="menu.route">
+            <router-link :to="menu.route">{{ menu.title }}</router-link>
+          </span>
+          <span v-else>
+            {{ menu.title }}
+          </span>
+          <ul v-for="(sub, sub_key) in menu.children" :key="sub_key">
+            <li>
+              <router-link :to="sub.route">
+                {{ sub.route }}
+              </router-link>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <!-- End menu -->
     </header>
     <div class="p-4">
       <div class="container">
@@ -38,6 +57,8 @@
 import { RouterLink } from 'vue-router'
 import HelloWorld from '@/components/HelloWorld.vue'
 import { useToast } from 'vue-toastification'
+import { SIDEBAR_MENU } from '@/config/sidebar_menu'
+
 const toast = useToast()
 
 const changeLanguage = (e: any) => {

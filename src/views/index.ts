@@ -1,7 +1,21 @@
-export { default as HomeView } from '@/views/HomeView.vue'
-export { default as AboutView } from '@/views/AboutView.vue'
-export { default as LoginView } from '@/views/Auth/LoginView.vue'
-export { default as FormComponentSample } from '@/views/Auth/FormComponentSample.vue'
-export { default as FormCompositionAPISample } from '@/views/Auth/FormCompositionAPISample.vue'
-export { default as NotFound } from '@/views/Error/NotFound.vue'
-export { default as Forbidden } from '@/views/Error/Forbidden.vue'
+const HomeView = () => import('@/views/HomeView.vue')
+const AboutView = () => import('@/views/AboutView.vue')
+const ContactView = () => import('@/views/ContactView.vue')
+const ServiceView = () => import('@/views/ServiceView.vue')
+const LoginView = () => import('@/views/Auth/LoginView.vue')
+const FormComponentSample = () => import('@/views/Auth/FormComponentSample.vue')
+const FormCompositionAPISample = () => import('@/views/Auth/FormCompositionAPISample.vue')
+const NotFound = () => import('@/views/Error/NotFound.vue')
+const Forbidden = () => import('@/views/Error/Forbidden.vue')
+
+export {
+  HomeView,
+  AboutView,
+  ContactView,
+  ServiceView,
+  LoginView,
+  FormComponentSample,
+  FormCompositionAPISample,
+  NotFound,
+  Forbidden,
+}
