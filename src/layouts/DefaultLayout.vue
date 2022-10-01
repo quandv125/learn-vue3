@@ -46,7 +46,9 @@
     </header>
     <div class="p-4">
       <div class="container">
-        <slot />
+        <transition name="slide-fade" mode="out-in">
+          <slot />
+        </transition>
       </div>
     </div>
   </div>

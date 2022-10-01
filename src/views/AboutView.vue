@@ -1,10 +1,9 @@
 <template>
-  <div class="about">
-    <h1>This is an about page: __ {{ estimating }}___</h1>
-    <button class="btn btn-success" @click="fetch">fetch (5)</button>
-    <button class="btn btn-success" @click="loadData">loadData</button>
-  </div>
   <div>
+    <h1 @click="fetchApi">This is an about page: __ {{ estimating }}___</h1>
+
+    <br /><br /><br />
+
     <table>
       <thead>
         <tr>
@@ -13,67 +12,34 @@
         </tr>
       </thead>
       <tbody>
-        <!-- <tr v-for="(item, key) in myData" :key="key">
-          <td>{{ item.id }}</td>
-          <td>{{ item.username }}</td>
-        </tr> -->
-
-        <tr v-for="(item, key) in purposes" :key="key">
+        <tr v-for="(item, key) in myData" :key="key">
           <td>{{ item.id }}</td>
           <td>{{ item.username }}</td>
         </tr>
       </tbody>
     </table>
+
+    <button class="grayBtn" @click="$router.push('/')">HOME</button>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, reactive, computed } from 'vue'
+
+<script setup lang="ts">
+import { onMounted, computed, ref } from 'vue'
 import { usePostHelper } from '@/helpers/usePostHelper' // (1)
 import rf from '@/repositories'
-
-export default defineComponent({
-  name: 'App',
-  data() {
-    return {
-      purposes: [] as any,
-      submitted: false,
-    }
-  },
-
-  setup() {
-    const myData: any = reactive([])
-    const { getItinerary, isEstimating } = usePostHelper() // (2)
-    const estimating = computed(() => isEstimating()) // (2s)
-
-    const fetch = async () => {
-      // (3)
-      const data = await getItinerary()
-      if (data) {
-        myData.value = data
-      }
-    }
-
-    return {
-      fetch, // (4)
-      estimating,
-      myData,
-    }
-  },
-  created() {
-    this.fetchData()
-  },
-  methods: {
-    loadData() {
-      this.fetchData()
-    },
-    async fetchData() {
-      const data = await rf.getRequest('PostRequest').getData()
-
-      if (data) {
-        this.purposes = data
-      }
-    },
-  },
+// Data
+const { isEstimating } = usePostHelper() // (2)
+const myData = ref({})
+// computed
+const estimating = computed(() => isEstimating()) // (2s)
+// method
+const fetchApi = async () => {
+  myData.value = await rf.getRequest('PostRequest').getData()
+}
+// mounted
+onMounted(async () => {
+  await fetchApi()
+  console.log('component đã mounted')
 })
 </script>
 <style>
