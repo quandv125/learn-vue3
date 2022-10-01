@@ -15,6 +15,8 @@
         <tr v-for="(item, key) in myData" :key="key">
           <td>{{ item.id }}</td>
           <td>{{ item.username }}</td>
+          <td>{{ item.email }}</td>
+          <td>{{ item.phone }}</td>
         </tr>
       </tbody>
     </table>
@@ -25,11 +27,11 @@
 <script setup lang="ts">
 import { onMounted, computed, ref } from 'vue'
 import { usePostHelper } from '@/helpers/usePostHelper' // (1)
-import type { ResItemType } from '@/types/fetchApi.type'
+import type { TopLevel } from '@/types/fetchApi.type'
 
 // Data
 const { getItinerary, isEstimating } = usePostHelper() // (2)
-const myData = ref<ResItemType[]>([])
+const myData = ref<TopLevel[]>([])
 // computed
 const estimating = computed(() => isEstimating()) // (2s)
 // method
