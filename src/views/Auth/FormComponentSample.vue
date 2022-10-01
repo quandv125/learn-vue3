@@ -51,15 +51,10 @@
 <script setup lang="ts">
 import { Form } from 'vee-validate'
 import { formComponentSampleSchema } from '@/utils/validator'
+import { PAYMENT_METHODS } from '@/constants/resources'
 
-const PAYMENT_METHODS = [
-  { value: '', text: 'Null' },
-  { value: 'cash', text: 'cash' },
-  { value: 'bank_transfer', text: 'bank_transfer' },
-  { value: 'bank_withdraw', text: 'bank_withdraw' },
-  { value: 'credit_card', text: 'credit_card' },
-  { value: 'combini_payment', text: 'combini_payment' },
-]
+// import { useRoute } from 'vue-router'
+// const router = useRoute()
 
 const onSubmit = (values: any) => {
   alert(JSON.stringify(values, null, 2))

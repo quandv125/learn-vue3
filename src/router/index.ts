@@ -36,12 +36,12 @@ export const routersList = [
     component: ContactView,
   },
   {
-    path: '/service',
+    path: '/service/:id?', // ? => Optional parameters
     name: 'servicePage',
     component: ServiceView,
   },
   {
-    path: '/form',
+    path: '/form/:id(\\d+)', // (\\d+) =>  will match /form and /form/42
     name: 'formPage',
     component: FormComponentSample,
     meta: {

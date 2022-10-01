@@ -28,14 +28,14 @@
       <ul>
         <li v-for="(menu, key) in SIDEBAR_MENU" :key="key">
           <span v-if="menu.route">
-            <router-link :to="menu.route">{{ menu.title }}</router-link>
+            <router-link :to="{ name: menu.route }">{{ menu.title }}</router-link>
           </span>
           <span v-else>
             {{ menu.title }}
           </span>
           <ul v-for="(sub, sub_key) in menu.children" :key="sub_key">
             <li>
-              <router-link :to="sub.route">
+              <router-link :to="{ name: sub.route }">
                 {{ sub.route }}
               </router-link>
             </li>

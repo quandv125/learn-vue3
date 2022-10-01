@@ -21,6 +21,8 @@ watch(
 </script>
 <template>
   <component :is="layout">
-    <router-view />
+    <transition name="fade">
+      <router-view />
+    </transition>
   </component>
 </template>

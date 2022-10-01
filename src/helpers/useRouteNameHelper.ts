@@ -7,5 +7,5 @@ export const useRouteNameHelper = () => {
 
 export const getRouteName = (name = 'Home'): string => {
   const routeInfo = filter(routersList, ['name', name])
-  return first(routeInfo)?.path || ''
+  return first(routeInfo)?.name || ''
 }

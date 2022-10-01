@@ -16,7 +16,7 @@
 
     <br /><br /><br />
 
-    <router-link to="/form">Go to form</router-link>
+    <router-link :to="{ name: 'formPage', params: { id: 123 }, query: { name: 'Quan' } }">Go to form</router-link>
   </div>
 </template>
 <script setup lang="ts">
