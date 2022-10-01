@@ -8,13 +8,13 @@ export function usePostHelper() {
   }
 }
 
-async function _fetchData() {
+// function _fetchData() {
+//   return rf.getRequest('PostRequest').getData()
+// }
+
+const _fetchData = async () => {
   return await rf.getRequest('PostRequest').getData()
 }
-
-// const fetchData = async () => {
-//   return await rf.getRequest('PostRequest').getData()
-// }
 
 function isEstimating() {
   return 'ok123'

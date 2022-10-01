@@ -26,19 +26,18 @@
 <script setup lang="ts">
 import { onMounted, computed, ref } from 'vue'
 import { usePostHelper } from '@/helpers/usePostHelper' // (1)
-import rf from '@/repositories'
 // Data
-const { isEstimating } = usePostHelper() // (2)
+const { getItinerary, isEstimating } = usePostHelper() // (2)
 const myData = ref({})
 // computed
 const estimating = computed(() => isEstimating()) // (2s)
 // method
 const fetchApi = async () => {
-  myData.value = await rf.getRequest('PostRequest').getData()
+  myData.value = await getItinerary()
 }
 // mounted
-onMounted(async () => {
-  await fetchApi()
+onMounted(() => {
+  fetchApi()
   console.log('component đã mounted')
 })
 </script>
