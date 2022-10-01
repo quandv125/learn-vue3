@@ -9,6 +9,7 @@ export const formComponentSampleSchema = Yup.object().shape({
     .required()
     .oneOf([Yup.ref('password')], 'Passwords do not match'),
   status: Yup.string().required('message.hello'), // key of multi-language
+  // age: Yup.array().of(Yup.string().required()).required(),
 })
 
 export const ExampleSchema = Yup.object().shape({
@@ -21,7 +22,7 @@ export const ExampleSchema = Yup.object().shape({
     .required('Date of Birth is required')
     .matches(
       /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/,
-      'Date of Birth must be a valid date in the format YYYY-MM-DD'
+      'Date of Birth must be a valid date in the format YYYY-MM-DD',
     ),
   password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
   confirmPassword: Yup.string()

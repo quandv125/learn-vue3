@@ -40,10 +40,20 @@
         success-message="Glad you remembered it!"
       />
 
-      <SelectOptions name="status" :value="formValues.status" :options="PAYMENT_METHODS" />
+      <SelectOptions name="status" :value="formValues.status" v-model="formValues.status" :options="PAYMENT_METHODS" />
+
+      <Radio name="favorite" label="Coca" value="coca" v-model="formValues.favorite" />
+      <Radio name="favorite" label="Tea" value="tea" v-model="formValues.favorite" />
+      <Radio name="favorite" label="Coffee" value="coffee" v-model="formValues.favorite" />
+
+      <ErrorMessage name="age" />
 
       <ButtonCustom />
       <ErrorCustom />
+
+      <pre>
+        {{ formValues }}
+      </pre>
     </Form>
   </div>
 </template>
@@ -73,7 +83,8 @@ const formValues = {
   email: 'quandv@gmail.com',
   password: '123123123',
   confirm_password: '123123123',
-  status: '',
+  status: 'credit_card',
+  favorite: 'tea',
 }
 </script>
 <!-- Style -->
