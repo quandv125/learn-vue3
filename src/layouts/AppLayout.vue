@@ -21,6 +21,12 @@ watch(
 </script>
 <template>
   <component :is="layout">
-    <router-view />
+    <router-view v-slot="{ Component }">
+      <transition name="slide-fade" mode="out-in">
+        <keep-alive>
+          <component :is="Component" />
+        </keep-alive>
+      </transition>
+    </router-view>
   </component>
 </template>
