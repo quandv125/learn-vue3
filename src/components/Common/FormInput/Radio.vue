@@ -1,8 +1,7 @@
 <template>
-  <div>
-    <label :for="`rd-${value}`">
-      <Field :name="name" :id="`rd-${value}`" :type="type" v-model="modelValue" :value="value" :class="className" />
-      <!-- <input
+  <label :class="className" :for="`rd-${value}`">
+    <Field :name="name" :id="`rd-${value}`" :type="type" v-model="modelValue" :value="value" />
+    <!-- <input
         type="radio"
         v-model="modelValue"
         :value="value"
@@ -11,9 +10,8 @@
         :checked="modelValue === value"
         @click="handleChange(value)"
       /> -->
-      <span>{{ label }}</span>
-    </label>
-  </div>
+    <span>{{ label }}</span>
+  </label>
 </template>
 
 <script lang="ts" setup>

@@ -4,7 +4,12 @@
 
     <RouterLink to="/">Back to home</RouterLink>
 
-    <Form @submit="onSubmit" :validation-schema="formComponentSampleSchema" @invalid-submit="onInvalidSubmit">
+    <Form
+      @submit="onSubmit"
+      :validation-schema="formComponentSampleSchema"
+      @invalid-submit="onInvalidSubmit"
+      v-slot="{ errors, values }"
+    >
       <TextInput
         name="name"
         type="text"
@@ -45,14 +50,20 @@
       <Radio name="favorite" label="Coca" value="coca" v-model="formValues.favorite" />
       <Radio name="favorite" label="Tea" value="tea" v-model="formValues.favorite" />
       <Radio name="favorite" label="Coffee" value="coffee" v-model="formValues.favorite" />
+      <br />
 
-      <ErrorMessage name="age" />
+      <div>
+        <Checkbox name="purposes" label="Travel" value="travel" v-model="formValues.purposes" />
+        <Checkbox name="purposes" label="Movie" value="movie" v-model="formValues.purposes" />
+        <Checkbox name="purposes" label="Football" value="football" v-model="formValues.purposes" />
+        <p>{{ errors.purposes }}</p>
+      </div>
 
       <ButtonCustom />
       <ErrorCustom />
 
       <pre>
-        {{ formValues }}
+        {{ values }}
       </pre>
     </Form>
   </div>
@@ -85,12 +96,13 @@ const formValues = {
   confirm_password: '123123123',
   status: 'credit_card',
   favorite: 'tea',
+  purposes: [],
 }
 </script>
 <!-- Style -->
 <style>
 form {
-  width: 300px;
+  width: 400px;
   margin: 0px auto;
   padding-bottom: 60px;
 }

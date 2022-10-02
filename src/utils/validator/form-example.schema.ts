@@ -9,7 +9,11 @@ export const formComponentSampleSchema = Yup.object().shape({
     .required()
     .oneOf([Yup.ref('password')], 'Passwords do not match'),
   status: Yup.string().required('message.hello'), // key of multi-language
-  // age: Yup.array().of(Yup.string().required()).required(),
+  purposes: Yup.array()
+    .of(Yup.string().required())
+    .required('Purposes is a required field')
+    .min(1, 'Purposes field must have at least 1 items')
+    .max(2, 'Purposes field must have less than or equal to 2 items'),
 })
 
 export const ExampleSchema = Yup.object().shape({
