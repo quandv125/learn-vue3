@@ -47,9 +47,12 @@
 
       <SelectOptions name="status" :value="formValues.status" v-model="formValues.status" :options="PAYMENT_METHODS" />
 
-      <Radio name="favorite" label="Coca" value="coca" v-model="formValues.favorite" />
-      <Radio name="favorite" label="Tea" value="tea" v-model="formValues.favorite" />
-      <Radio name="favorite" label="Coffee" value="coffee" v-model="formValues.favorite" />
+      <div>
+        <Radio name="favorite" label="Coca" value="coca" v-model="formValues.favorite" />
+        <Radio name="favorite" label="Tea" value="tea" v-model="formValues.favorite" />
+        <Radio name="favorite" label="Coffee" value="coffee" v-model="formValues.favorite" />
+        {{ errors.favorite }}
+      </div>
       <br />
 
       <div>
