@@ -22,7 +22,7 @@ axios.interceptors.request.use(
   function (error) {
     // Do something with request error
     return Promise.reject(error)
-  }
+  },
 )
 
 // Add a RESPONSE interceptor
@@ -41,7 +41,7 @@ axios.interceptors.response.use(
       return axios(originalRequest)
     }
     return Promise.reject(error)
-  }
+  },
 )
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

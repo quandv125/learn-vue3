@@ -91,13 +91,13 @@ const router = createRouter({
 router.beforeEach(async (to, from, next) => {
   const auth = useAuthStore()
   if (to.name === 'loginPage' && auth.user) {
-    const name = from.name || ''
-    next({ name })
+    const name = from.name || 'homePage'
+    return next({ name })
+  } else if (to.matched.some(record => record.meta.requiresAuth) && !auth.user) {
+    return next({ name: 'loginPage' })
+  } else {
+    return next()
   }
-  if (to.matched.some(record => record.meta.requiresAuth) && !auth.user) {
-    next({ name: 'loginPage' })
-  }
-  next()
 })
 
 export default router
