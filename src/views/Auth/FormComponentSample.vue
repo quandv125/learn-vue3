@@ -70,6 +70,7 @@
 </template>
 <!-- Script -->
 <script setup lang="ts">
+import { reactive } from 'vue'
 import { Form } from 'vee-validate'
 import { formComponentSampleSchema } from '@/utils/validator'
 import { PAYMENT_METHODS } from '@/constants/resources'
@@ -77,6 +78,17 @@ import { PAYMENT_METHODS } from '@/constants/resources'
 // import { useRoute } from 'vue-router'
 // const router = useRoute()
 
+// data
+const formValues = reactive({
+  name: 'test',
+  email: 'quandv@gmail.com',
+  password: '123123123',
+  confirm_password: '123123123',
+  status: 'credit_card',
+  favorite: 'tea',
+  purposes: [],
+})
+// method
 const onSubmit = (values: any) => {
   alert(JSON.stringify(values, null, 2))
 }
@@ -87,16 +99,6 @@ const onInvalidSubmit = () => {
   setTimeout(() => {
     submitBtn.classList.remove('invalid')
   }, 1000)
-}
-
-const formValues = {
-  name: 'test',
-  email: 'quandv@gmail.com',
-  password: '123123123',
-  confirm_password: '123123123',
-  status: 'credit_card',
-  favorite: 'tea',
-  purposes: [],
 }
 </script>
 <!-- Style -->
