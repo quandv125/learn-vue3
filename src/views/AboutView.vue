@@ -1,54 +1,33 @@
 <template>
   <div>
-    <h1 @click="fetchApi">This is an about page: __ {{ estimating }}___</h1>
+    <h1>This is an about page: {{ estimating }}</h1>
 
-    <br /><br /><br />
+    <Suspense>
+      <template #default>
+        <example />
+      </template>
+      <template #fallback>
+        <span style="border: 1px solid; margin: 20px; padding: 20px; background: #4caf50; color: #fff">
+          Loading...
+        </span>
+      </template>
+    </Suspense>
 
-    <table>
-      <thead>
-        <tr>
-          <td>Id</td>
-          <td>Name</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(item, key) in myData" :key="key">
-          <td>{{ item.id }}</td>
-          <td>{{ item.username }}</td>
-          <td>{{ item.email }}</td>
-          <td>{{ item.phone }}</td>
-        </tr>
-      </tbody>
-    </table>
     <button class="grayBtn" @click="$router.push('/')">HOME</button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, computed, ref } from 'vue'
-import { usePostHelper } from '@/helpers/usePostHelper' // (1)
-import type { TopLevel } from '@/types/fetchApi.type'
+import { computed } from 'vue'
+import Example from '@/components/Example.vue'
+// import { defineAsyncComponent } from 'vue'
+// const Example = defineAsyncComponent(() => import('@/components/Example.vue'))
+
+import { usePostHelper } from '@/helpers/usePostHelper'
 
 // Data
-const { getItinerary, isEstimating } = usePostHelper() // (2)
-const myData = ref<TopLevel[]>([])
+const { isEstimating } = usePostHelper() // (2)
+
 // computed
 const estimating = computed(() => isEstimating()) // (2s)
-// method
-const fetchApi = async () => {
-  myData.value = await getItinerary()
-}
-// mounted
-onMounted(() => {
-  fetchApi()
-  console.log('component đã mounted')
-})
 </script>
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 15vh;
-    align-items: center;
-  }
-}
-</style>
