@@ -12,7 +12,8 @@ export function usePostHelper() {
 //   return rf.getRequest('PostRequest').getData()
 // }
 
-const _fetchData = () => {
+const _fetchData = async () => {
+  await new Promise(resolve => setTimeout(resolve, 1000))
   return rf.getRequest('PostRequest').getData()
 }
 

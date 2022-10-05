@@ -22,20 +22,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import type { TopLevel } from '@/types/fetchApi.type'
-
 import { usePostHelper } from '@/helpers/usePostHelper' // (1)
 const { getItinerary } = usePostHelper() // (2)
+
 const myData = ref<TopLevel[]>([])
-// method
-const fetchApi = async () => {
-  await new Promise(resolve => setTimeout(resolve, 2000))
-  myData.value = await getItinerary()
-}
-// mounted
-onMounted(() => {
-  fetchApi()
-  console.log('component đã mounted')
-})
+
+myData.value = await getItinerary()
 </script>
