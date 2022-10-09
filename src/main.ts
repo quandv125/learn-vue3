@@ -19,6 +19,7 @@ import Radio from '@/components/Common/FormInput/Radio.vue'
 import Checkbox from '@/components/Common/FormInput/Checkbox.vue'
 import Button from '@/components/Common/FormInput/Button.vue'
 import Errors from '@/components/Common/Messages/Errors.vue'
+import Modal from '@/components/Common/Modal.vue'
 
 const app = createApp(App)
 
@@ -30,6 +31,7 @@ app
   .component('Checkbox', Checkbox)
   .component('ButtonCustom', Button)
   .component('ErrorCustom', Errors)
+  .component('Modal', Modal)
 
 app.use(createPinia())
 app.use(router)
