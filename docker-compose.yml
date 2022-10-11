@@ -1,0 +1,12 @@
+version: "3.4"
+services:
+  my_frontend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: my_frontend
+    ports:
+      - 6655:4545  
+    volumes:
+      - /app/node_modules
+      - ./:/app
