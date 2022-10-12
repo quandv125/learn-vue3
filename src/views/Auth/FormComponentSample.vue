@@ -7,6 +7,7 @@
     <Form
       @submit="onSubmit"
       :validation-schema="formComponentSampleSchema"
+      :initial-values="formValues"
       @invalid-submit="onInvalidSubmit"
       v-slot="{ errors, values }"
     >
@@ -46,28 +47,25 @@
       />
 
       <SelectOptions name="status" :value="formValues.status" v-model="formValues.status" :options="PAYMENT_METHODS" />
-
       <div>
-        <Radio name="favorite" label="Coca" value="coca" v-model="formValues.favorite" />
-        <Radio name="favorite" label="Tea" value="tea" v-model="formValues.favorite" />
-        <Radio name="favorite" label="Coffee" value="coffee" v-model="formValues.favorite" />
+        <Radio name="favorite" label="Coffee" v-model="formValues.favorite" value="coffee"  />
+        <Radio name="favorite" label="Coca" v-model="formValues.favorite" value="coca"  />
+        <Radio name="favorite" label="Tea" v-model="formValues.favorite" value="tea"  />
         {{ errors.favorite }}
       </div>
       <br />
 
       <div>
-        <Checkbox name="purposes" label="Travel" value="travel" v-model="formValues.purposes" />
-        <Checkbox name="purposes" label="Movie" value="movie" v-model="formValues.purposes" />
-        <Checkbox name="purposes" label="Football" value="football" v-model="formValues.purposes" />
+        <Checkbox name="purposes" label="Travel"  v-model="formValues.purposes" value="travel" />
+        <Checkbox name="purposes" label="Movie"  v-model="formValues.purposes" value="movie" />
+        <Checkbox name="purposes" label="Football"  v-model="formValues.purposes" value="football" />
         <p>{{ errors.purposes }}</p>
       </div>
 
       <ButtonCustom />
       <ErrorCustom />
 
-      <pre>
-        {{ values }}
-      </pre>
+      <pre> {{ values }} </pre>
     </Form>
   </div>
 </template>
@@ -83,13 +81,13 @@ import { PAYMENT_METHODS } from '@/constants/resources'
 
 // data
 const formValues = reactive({
-  name: 'test',
+  name: 'test123',
   email: 'quandv@gmail.com',
   password: '123123123',
   confirm_password: '123123123',
   status: 'credit_card',
-  favorite: 'tea',
-  purposes: [],
+  favorite: 'coca',
+  purposes: ['movie', 'football'],
 })
 // method
 const onSubmit = (values: any) => {

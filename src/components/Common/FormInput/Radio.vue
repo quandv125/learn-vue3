@@ -1,22 +1,20 @@
 <template>
-  <label :class="className" :for="`rd-${value}`">
-    <Field :name="name" :id="`rd-${value}`" :type="type" v-model="modelValue" :value="value" />
-    <!-- <input
-        type="radio"
-        v-model="modelValue"
-        :value="value"
-        :name="name"
-        :id="`rd-${value}`"
-        :checked="modelValue === value"
-        @click="handleChange(value)"
-      /> -->
+  <label :for="`rd-${value}`" :class="className">
+     <input 
+      :name="name"
+      :id="`rd-${value}`"
+      :type="type"
+      :value="value"
+      :checked="checked"
+      @click="handleChange(value)"
+     />
     <span>{{ label }}</span>
   </label>
 </template>
 
 <script lang="ts" setup>
-import { toRefs } from 'vue'
-import { Field } from 'vee-validate'
+import { defineProps, toRef, computed } from 'vue'
+import { useField } from 'vee-validate'
 
 const props = defineProps({
   type: {
@@ -24,9 +22,7 @@ const props = defineProps({
     default: 'radio',
   },
   modelValue: {
-    type: String,
-    required: true,
-    default: '',
+    type: null,
   },
   name: {
     type: String,
@@ -35,8 +31,6 @@ const props = defineProps({
   },
   value: {
     type: String,
-    required: true,
-    default: '',
   },
   label: {
     type: String,
@@ -48,16 +42,9 @@ const props = defineProps({
   },
 })
 
-const { name, modelValue } = toRefs(props)
-// const { checked, handleChange } = useField(name, undefined, {
-//   checkedValue: props.value,
-// })
-</script>
+const name = toRef(props, 'name')
 
-<style scoped>
-button {
-  background: none;
-  border: none;
-  font-size: 22px;
-}
-</style>
+const { handleChange } = useField(name, undefined);
+
+const checked = computed(() => props.value === props.modelValue)
+</script>

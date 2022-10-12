@@ -1,13 +1,20 @@
 <template>
   <label :for="`chbox-${value}`" :class="className">
-    <Field :name="name" :id="`chbox-${value}`" :type="type" v-model="modelValue" :value="value" />
+     <input 
+      :name="name"
+      :id="`chbox-${value}`"
+      :type="type"
+      :value="value"
+      :checked="props.modelValue.includes(value)"
+      @click="handleChange(value)"
+     />
     <span>{{ label }}</span>
   </label>
 </template>
 
 <script lang="ts" setup>
-import { toRefs } from 'vue'
-import { Field } from 'vee-validate'
+import { defineProps, toRef } from 'vue'
+import { useField } from 'vee-validate'
 
 const props = defineProps({
   type: {
@@ -15,9 +22,7 @@ const props = defineProps({
     default: 'checkbox',
   },
   modelValue: {
-    type: Array,
-    required: true,
-    default: () => [],
+    type: null,
   },
   name: {
     type: String,
@@ -26,8 +31,6 @@ const props = defineProps({
   },
   value: {
     type: String,
-    required: true,
-    default: '',
   },
   label: {
     type: String,
@@ -39,5 +42,11 @@ const props = defineProps({
   },
 })
 
-const { name, modelValue } = toRefs(props)
+const name = toRef(props, 'name')
+
+const { checked, handleChange } = useField(name, undefined, {
+  type: 'checkbox',
+  checkedValue: true,
+  uncheckedValue: false,
+});
 </script>
