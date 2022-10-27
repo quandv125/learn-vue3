@@ -13,15 +13,7 @@ fakeBackend()
 
 import { i18n } from '@/locales'
 
-import {
-  TextInput,
-  SelectOptions,
-  Radio,
-  Checkbox,
-  Button,
-  Errors,
-  Modal,
-} from '@/components/Common/FormInput'
+import { TextInput, SelectOptions, Radio, Checkbox, Button, Errors, Modal } from '@/components/Common/FormInput'
 
 const app = createApp(App)
 
