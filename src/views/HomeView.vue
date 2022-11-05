@@ -12,8 +12,10 @@
     <div v-if="users.loading" class="spinner-border spinner-border-sm"></div>
     <div v-if="users.error" class="text-danger">Error loading users: {{ users.error }}</div>
 
-    <button @click="logout">Logout - {{ modalActive }}</button>
-    <button type="button" @click="onToggleModal">Open Modal</button>
+    <v-btn variant="flat" @click="logout"> Logout </v-btn>
+    <br /><br />
+    <v-btn variant="flat" color="info" :loading="modalActive" @click="onToggleModal"> Open Modal </v-btn>
+
     <br /><br />
     <Modal :modal-active="modalActive" @close="onToggleModal">
       <div class="modal-content">

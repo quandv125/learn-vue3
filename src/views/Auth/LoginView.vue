@@ -33,10 +33,9 @@
         <div class="invalid-feedback">{{ errors.password }}</div>
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" :disabled="isSubmitting">
-          <span v-show="isSubmitting" class="spinner-border spinner-border-sm mr-1"></span>
+        <v-btn variant="flat" type="submit" :loading="isSubmitting">
           {{ $t('sign_in.title') }}
-        </button>
+        </v-btn>
       </div>
       <div v-if="errors.apiError" class="alert alert-danger mt-3 mb-0">
         {{ errors.apiError }}

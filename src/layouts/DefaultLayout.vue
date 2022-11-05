@@ -12,11 +12,8 @@
           <RouterLink to="/about">About</RouterLink>
           <RouterLink to="/login">Login</RouterLink>
           <div class="locale-changer">
-            <select v-model="$i18n.locale" @change="changeLanguage">
-              <option v-for="locale in $i18n.availableLocales" :key="`locale-${locale}`" :value="locale">
-                {{ locale }}
-              </option>
-            </select>
+            <v-select label="Language" v-model="$i18n.locale" :items="$i18n.availableLocales"></v-select>
+
             <br /><br />
             <button @click="showToast">showToast</button>
             <br /><br />
@@ -60,10 +57,6 @@ import { useToast } from 'vue-toastification'
 import { SIDEBAR_MENU } from '@/config/sidebar_menu'
 
 const toast = useToast()
-
-const changeLanguage = (e: any) => {
-  localStorage.setItem('locale', e.target.value)
-}
 
 const showToast = () => {
   toast.success('You did it! 🎉')
