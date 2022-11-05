@@ -53,18 +53,21 @@ const onToggleModal = () => {
   modalActive.value = !modalActive.value
 }
 </script>
-<style scoped>
-.home .modal-content {
-  display: flex;
-  flex-direction: column;
-}
-.home .modal-content h1 {
-  font-size: 32px;
-  color: red;
-}
-.home .modal-content h1,
-.home .modal-content p {
-  margin-bottom: 16px;
-  color: red;
+<style lang="scss" scoped>
+.home {
+  .modal-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+    h1 {
+      text-align: center;
+      margin: 0 20px;
+      font-size: 32px;
+      color: red;
+    }
+    p {
+      color: red;
+    }
+  }
 }
 </style>
