@@ -3,10 +3,10 @@
     <div v-show="modalActive" class="modal" @click="clickOutSide">
       <transition name="modal-animation-inner">
         <div v-show="modalActive" class="modal-inner">
-          <i @click="close" class="far fa-times-circle">Close</i>
+          <v-icon class="modal-close" @click="close" icon="mdi-close"></v-icon>
           <!-- Modal content -->
           <slot />
-          <button type="button" @click="close">close</button>
+          <v-btn color="info" @click="close">close</v-btn>
         </div>
       </transition>
     </div>
@@ -71,12 +71,13 @@ const clickOutSide = (e: Event) => {
   .modal-inner {
     position: relative;
     max-width: 640px;
-    width: 80%;
+    width: 100%;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     background-color: #fff;
-    padding: 64px 16px;
+    padding: 15px 20px;
     border-radius: 10px;
-    i {
+    .modal-close {
+      z-index: 1;
       position: absolute;
       top: 15px;
       right: 15px;
@@ -86,14 +87,6 @@ const clickOutSide = (e: Event) => {
       &:hover {
         color: crimson;
       }
-    }
-    button {
-      padding: 20px 30px;
-      border: none;
-      font-size: 16px;
-      background-color: crimson;
-      color: #fff;
-      cursor: pointer;
     }
   }
 }

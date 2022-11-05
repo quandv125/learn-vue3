@@ -20,7 +20,7 @@
     <Modal :modal-active="modalActive" @close="onToggleModal">
       <div class="modal-content">
         <h1>This is modal header</h1>
-        <p>This is modal message</p>
+        <p class="msg">This is modal message</p>
       </div>
     </Modal>
     <br />
@@ -65,5 +65,6 @@ const onToggleModal = () => {
 .home .modal-content h1,
 .home .modal-content p {
   margin-bottom: 16px;
+  color: red;
 }
 </style>

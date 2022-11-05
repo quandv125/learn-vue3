@@ -15,7 +15,7 @@
             <v-select label="Language" v-model="$i18n.locale" :items="$i18n.availableLocales"></v-select>
 
             <br /><br />
-            <button @click="showToast">showToast</button>
+            <v-btn @click="showToast">Show Toast</v-btn>
             <br /><br />
             <input type="tel" v-maska="'###-####'" />
           </div>
