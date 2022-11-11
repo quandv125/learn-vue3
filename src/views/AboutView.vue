@@ -7,7 +7,7 @@
         <example />
       </template>
       <template #fallback>
-        <span style="border: 1px solid; padding: 20px; background: #4caf50; color: #fff"> Loading... </span>
+         <v-progress-circular></v-progress-circular>
       </template>
     </Suspense>
     <br /><br /><br />
