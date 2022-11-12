@@ -12,10 +12,12 @@
   </v-navigation-drawer>
 
   <v-app-bar app flat class="px-6 layout-navbar app-header" style="background: transparent">
-    <template v-if="mdAndDown" #prepend>
+    <template v-if="mdAndDown">
       <v-app-bar-nav-icon class="d-block d-lg-none me-2 ms-n3" color="inherit" @click="drawer = true" />
     </template>
-    <slot name="navbar" />
+    <template v-else>
+      <Header />
+    </template>
   </v-app-bar>
 
   <v-main class="w-100">
@@ -32,6 +34,7 @@
 <script lang="ts" setup>
 import { useDisplay } from 'vuetify'
 import NavBarContent from '@/layouts/components/NavBar/NavBarContent.vue'
+import Header from '@/layouts/components/Header.vue'
 import Footer from './components/Footer.vue'
 import { ref } from 'vue'
 const { lgAndUp, mdAndDown } = useDisplay()

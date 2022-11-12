@@ -76,7 +76,7 @@ export default {
     // set v-progress-circular default color to primary
     size: 50,
     color: 'primary',
-    indeterminate: true
+    indeterminate: true,
   },
   VSlider: {
     // set v-slider default color to primary
