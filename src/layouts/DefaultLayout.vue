@@ -1,35 +1,33 @@
 <template>
-  <VerticalNavLayout>
-    <v-navigation-drawer
-      v-model="drawer"
-      app
-      floating
-      sticky
-      :absolute="false"
-      style="background: rgb(var(--v-theme-background))"
-      class="layout-vertical-nav position-fixed"
-    >
-      <!-- <slot name="navigation-drawer-content" /> -->
-      <DrawerContent />
-    </v-navigation-drawer>
+  <v-navigation-drawer
+    v-model="drawer"
+    app
+    floating
+    sticky
+    :absolute="false"
+    style="background: rgb(var(--v-theme-background))"
+    class="layout-vertical-nav position-fixed"
+  >
+    <!-- <slot name="navigation-drawer-content" /> -->
+    <DrawerContent />
+  </v-navigation-drawer>
 
-    <v-app-bar app flat class="px-6 layout-navbar app-header" style="background: transparent">
-      <template v-if="mdAndDown" #prepend>
-        <v-app-bar-nav-icon class="d-block d-lg-none me-2 ms-n3" color="inherit" @click="drawer = true" />
-      </template>
-      <slot name="navbar" />
-    </v-app-bar>
+  <v-app-bar app flat class="px-6 layout-navbar app-header" style="background: transparent">
+    <template v-if="mdAndDown" #prepend>
+      <v-app-bar-nav-icon class="d-block d-lg-none me-2 ms-n3" color="inherit" @click="drawer = true" />
+    </template>
+    <slot name="navbar" />
+  </v-app-bar>
 
-    <v-main class="w-100">
-      <div class="pa-6">
-        <slot />
-      </div>
-    </v-main>
+  <v-main class="w-100">
+    <div class="pa-6">
+      <slot />
+    </div>
+  </v-main>
 
-    <v-footer app style="background: transparent" class="app-footer">
-      <Footer />
-    </v-footer>
-  </VerticalNavLayout>
+  <v-footer app style="background: transparent" class="app-footer">
+    <Footer />
+  </v-footer>
 </template>
 <!-- Script -->
 <script lang="ts" setup>
