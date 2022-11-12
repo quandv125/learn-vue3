@@ -8,8 +8,7 @@
     style="background: rgb(var(--v-theme-background))"
     class="layout-vertical-nav position-fixed"
   >
-    <!-- <slot name="navigation-drawer-content" /> -->
-    <DrawerContent />
+    <NavBarContent />
   </v-navigation-drawer>
 
   <v-app-bar app flat class="px-6 layout-navbar app-header" style="background: transparent">
@@ -32,7 +31,7 @@
 <!-- Script -->
 <script lang="ts" setup>
 import { useDisplay } from 'vuetify'
-import DrawerContent from '@/layouts/components/DrawerContent.vue'
+import NavBarContent from '@/layouts/components/NavBar/NavBarContent.vue'
 import Footer from './components/Footer.vue'
 import { ref } from 'vue'
 const { lgAndUp, mdAndDown } = useDisplay()
