@@ -45,7 +45,7 @@ export const routersList = [
     name: 'formPage',
     component: FormComponentSample,
     meta: {
-      layout: 'BlankLayout',
+      // layout: 'BlankLayout',
     },
   },
   {
@@ -61,7 +61,7 @@ export const routersList = [
     name: 'register',
     component: FormCompositionAPISample,
     meta: {
-      layout: 'BlankLayout',
+      // layout: 'BlankLayout',
     },
   },
   {

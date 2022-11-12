@@ -10,9 +10,19 @@
     </RouterLink>
   </div>
   <v-list v-model:opened="open" shaped>
-    <v-list-item prepend-icon="mdi-home" title="Home" :to="`home`" rounded="shaped"></v-list-item>
-    <v-list-item prepend-icon="mdi-ceiling-light" title="About" :to="`about`" rounded="shaped"></v-list-item>
-    <v-list-item prepend-icon="mdi-chart-pie" title="Service" :to="`service`" rounded="shaped"></v-list-item>
+    <v-list-item prepend-icon="mdi-home" title="Home" :to="{ name: 'homePage' }" rounded="shaped"></v-list-item>
+    <v-list-item
+      prepend-icon="mdi-ceiling-light"
+      title="About"
+      :to="{ name: 'aboutPage' }"
+      rounded="shaped"
+    ></v-list-item>
+    <v-list-item
+      prepend-icon="mdi-chart-pie"
+      title="Service"
+      :to="{ name: 'servicePage' }"
+      rounded="shaped"
+    ></v-list-item>
 
     <v-list-group value="Product">
       <template #activator="{ props }">
@@ -55,8 +65,8 @@ import { ref } from 'vue'
 const open: any = ref(['Product'])
 
 const products: any = ref([
-  { text: 'Real-Time', icon: 'mdi-clock', to: 'home' },
-  { text: 'Audience', icon: 'mdi-account', to: 'about' },
+  { text: 'Real-Time', icon: 'mdi-clock', to: { name: 'formPage', params: { id: 123 }, query: { name: 'Quan' } } },
+  { text: 'Audience', icon: 'mdi-account', to: { name: 'register' } },
   { text: 'Conversions', icon: 'mdi-flag', to: 'service' },
 ])
 const admins: any = ref([
