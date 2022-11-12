@@ -33,7 +33,7 @@
 <!-- Script -->
 <script lang="ts" setup>
 import { useDisplay } from 'vuetify'
-import NavBarContent from '@/layouts/components/NavBar/NavBarContent.vue'
+import NavBarContent from '@/layouts/components/NavBarContent.vue'
 import Header from '@/layouts/components/Header.vue'
 import Footer from './components/Footer.vue'
 import { ref } from 'vue'
