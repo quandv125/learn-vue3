@@ -64,7 +64,7 @@ const clickOutSide = (e: Event) => {
   align-items: center;
   height: 100vh;
   width: 100vw;
-  z-index: 1000;
+  z-index: 1010;
   position: fixed;
   top: 0;
   left: 0;

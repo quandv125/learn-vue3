@@ -1,6 +1,6 @@
 <template>
   <VerticalNavLayout>
-    <VNavigationDrawer
+    <v-navigation-drawer
       v-model="drawer"
       app
       floating
@@ -11,24 +11,24 @@
     >
       <!-- <slot name="navigation-drawer-content" /> -->
       <DrawerContent />
-    </VNavigationDrawer>
+    </v-navigation-drawer>
 
-    <VAppBar app flat class="px-6 layout-navbar app-header" style="background: transparent">
+    <v-app-bar app flat class="px-6 layout-navbar app-header" style="background: transparent">
       <template v-if="mdAndDown" #prepend>
-        <VAppBarNavIcon class="d-block d-lg-none me-2 ms-n3" color="inherit" @click="drawer = true" />
+        <v-app-bar-nav-icon class="d-block d-lg-none me-2 ms-n3" color="inherit" @click="drawer = true" />
       </template>
       <slot name="navbar" />
-    </VAppBar>
+    </v-app-bar>
 
-    <VMain class="w-100">
+    <v-main class="w-100">
       <div class="pa-6">
         <slot />
       </div>
-    </VMain>
+    </v-main>
 
-    <VFooter app style="background: transparent" class="app-footer">
+    <v-footer app style="background: transparent" class="app-footer">
       <Footer />
-    </VFooter>
+    </v-footer>
   </VerticalNavLayout>
 </template>
 <!-- Script -->

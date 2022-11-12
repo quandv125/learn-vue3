@@ -1,9 +1,7 @@
 <template>
-  <VApp>
-    <VLayout class="layout-wrapper layout-nav-type-vertical">
-      <AppLayout />
-    </VLayout>
-  </VApp>
+  <v-app>
+    <AppLayout />
+  </v-app>
 </template>
 
 <script setup lang="ts">
