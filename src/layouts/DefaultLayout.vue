@@ -1,128 +1,68 @@
 <template>
-  <div class="default_layout">
-    <header>
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-      <div class="wrapper">
-        <HelloWorld msg="You did it!" />
-        <h1 id="test">
-          <span>{{ $t('common.select_lang') }}</span>
-        </h1>
-        <nav>
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
-          <RouterLink to="/login">Login</RouterLink>
-          <div class="locale-changer">
-            <v-select label="Language" v-model="$i18n.locale" :items="$i18n.availableLocales"></v-select>
+  <VerticalNavLayout>
+    <VNavigationDrawer
+      v-model="drawer"
+      app
+      floating
+      sticky
+      :absolute="false"
+      style="background: rgb(var(--v-theme-background))"
+      class="layout-vertical-nav position-fixed"
+    >
+      <!-- <slot name="navigation-drawer-content" /> -->
+      <DrawerContent />
+    </VNavigationDrawer>
 
-            <br /><br />
-            <v-btn @click="showToast">Show Toast</v-btn>
-            <br /><br />
-            <input type="tel" v-maska="'###-####'" />
-          </div>
-        </nav>
-      </div>
-      <!-- Menu -->
-      <ul>
-        <li v-for="(menu, key) in SIDEBAR_MENU" :key="key">
-          <span v-if="menu.route">
-            <router-link :to="{ name: menu.route }">{{ menu.title }}</router-link>
-          </span>
-          <span v-else>
-            {{ menu.title }}
-          </span>
-          <ul v-for="(sub, sub_key) in menu.children" :key="sub_key">
-            <li>
-              <router-link :to="{ name: sub.route }">
-                {{ sub.route }}
-              </router-link>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <!-- End menu -->
-    </header>
-    <div class="p-4">
-      <div class="container">
+    <VAppBar app flat class="px-6 layout-navbar app-header" style="background: transparent">
+      <template v-if="mdAndDown" #prepend>
+        <VAppBarNavIcon class="d-block d-lg-none me-2 ms-n3" color="inherit" @click="drawer = true" />
+      </template>
+      <slot name="navbar" />
+    </VAppBar>
+
+    <VMain class="w-100">
+      <div class="pa-6">
         <slot />
       </div>
-    </div>
-  </div>
+    </VMain>
+
+    <VFooter app style="background: transparent" class="app-footer">
+      <Footer />
+    </VFooter>
+  </VerticalNavLayout>
 </template>
 <!-- Script -->
+<script lang="ts" setup>
+import { useDisplay } from 'vuetify'
+import DrawerContent from '@/layouts/components/DrawerContent.vue'
+import Footer from './components/Footer.vue'
+import { ref } from 'vue'
+const { lgAndUp, mdAndDown } = useDisplay()
 
-<script setup lang="ts">
-import { RouterLink } from 'vue-router'
-import HelloWorld from '@/components/HelloWorld.vue'
-import { useToast } from 'vue-toastification'
-import { SIDEBAR_MENU } from '@/config/sidebar_menu'
-
-const toast = useToast()
-
-const showToast = () => {
-  toast.success('You did it! 🎉')
-}
+const drawer = ref(lgAndUp.value)
 </script>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
+<style lang="scss">
+.layout-vertical-nav {
+  top: 0 !important;
+  height: 100% !important;
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
+  .v-navigation-drawer__content {
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+    flex-direction: column;
 
-  .logo {
-    margin: 0 2rem 0 0;
+    > ul {
+      flex-grow: 1;
+    }
   }
+}
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+.v-toolbar__prepend {
+  margin-inline-start: 0 !important;
+}
 
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.v-footer {
+  padding-left: 24px !important;
+  padding-right: 24px !important;
 }
 </style>

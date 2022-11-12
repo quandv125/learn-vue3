@@ -3,18 +3,18 @@ import { createPinia } from 'pinia'
 
 import App from '@/App.vue'
 import router from '@/router'
-import Toast from 'vue-toastification'
-import Maska from 'maska'
+import { i18n } from '@/locales'
 
+// Styles css/scss
+import '@/assets/scss/style.scss'
 import '@/assets/main.css'
 
 import { fakeBackend } from '@/helpers'
 fakeBackend()
 
-import { i18n } from '@/locales'
-
-import { TextInput, SelectOptions, Radio, Checkbox, Button, Errors, Modal } from '@/components/Common/FormInput'
-
+// Package, lib
+import Toast from 'vue-toastification'
+import Maska from 'maska'
 import vuetify from '@/plugins/vuetify'
 import { loadFonts } from '@/plugins/webfontloader'
 loadFonts()
@@ -22,6 +22,7 @@ loadFonts()
 const app = createApp(App)
 
 // Global Registration
+import { TextInput, SelectOptions, Radio, Checkbox, Button, Errors, Modal } from '@/components/Common/FormInput'
 app
   .component('TextInput', TextInput)
   .component('SelectOptions', SelectOptions)
