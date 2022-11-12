@@ -6,8 +6,8 @@ import router from '@/router'
 import { i18n } from '@/locales'
 
 // Styles css/scss
-import '@/assets/scss/style.scss'
-import '@/assets/main.css'
+import '@/assets/styles/scss/style.scss'
+import '@/assets/styles/main.css'
 
 import { fakeBackend } from '@/helpers'
 fakeBackend()

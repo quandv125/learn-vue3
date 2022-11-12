@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import logo from '@/assets/logo.svg?raw'
+import logo from '@/assets/images/logo.svg?raw'
 import VerticalNavLink from './VerticalNavLink.vue'
 import VerticalNavSectionTitle from './VerticalNavSectionTitle.vue'
 </script>
