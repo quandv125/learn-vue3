@@ -7,7 +7,7 @@ export const iconify: IconSet = {
   component: (props: IconProps) => h(Icon, props),
 }
 
-export const icons = {
+export const icons: any = {
   defaultSet: 'iconify',
   aliases,
   sets: {
