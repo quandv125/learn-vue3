@@ -4,7 +4,6 @@
       {{ $t('message.hello') }}
     </p>
     <h1>Hi {{ authUser?.firstName }}!</h1>
-    <p>You're logged in with Vue 3 + Pinia & JWT!!</p>
     <h3>Users from secure api end point:</h3>
     <ul v-if="users.length">
       <li v-for="user in users" :key="user.id">{{ user.firstName }} {{ user.lastName }}</li>
@@ -12,8 +11,6 @@
     <div v-if="users.loading" class="spinner-border spinner-border-sm"></div>
     <div v-if="users.error" class="text-danger">Error loading users: {{ users.error }}</div>
 
-    <v-btn variant="flat" @click="logout"> Logout </v-btn>
-    <br /><br />
     <v-btn variant="flat" color="info" :loading="modalActive" @click="onToggleModal"> Open Modal </v-btn>
 
     <br /><br />
@@ -32,11 +29,9 @@
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAuthStore, useUsersStore } from '@/stores'
-import { useToast } from 'vue-toastification'
 
 // data
 const authStore = useAuthStore()
-const toast = useToast()
 const modalActive = ref<boolean>(false)
 const { user: authUser }: any = storeToRefs(authStore)
 const usersStore = useUsersStore()
@@ -44,11 +39,6 @@ const { users }: any = storeToRefs(usersStore)
 
 usersStore.getAll()
 // Method
-const logout = () => {
-  toast.success('Logout! 🎉')
-  return authStore.logout()
-}
-
 const onToggleModal = () => {
   modalActive.value = !modalActive.value
 }

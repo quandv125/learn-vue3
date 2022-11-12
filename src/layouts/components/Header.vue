@@ -32,11 +32,16 @@
     </v-list>
   </v-menu>
 
+  <VBtn icon variant="text" color="default" class="me-2" size="small">
+    {{ users?.firstName || '' }}
+  </VBtn>
+
   <UserProfile />
 </template>
 <script lang="ts" setup>
 import UserProfile from '@/layouts/components/UserProfile.vue'
 import { i18n } from '@/locales'
+const users = JSON.parse(localStorage.getItem('user') || '{}')
 
 const handleClick = (locale: string) => {
   localStorage.setItem('locale', locale)

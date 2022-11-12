@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import avatar1 from '@/assets/images/avatars/avatar-1.png'
-
-const avatarBadgeProps = {
-  dot: true,
-  offsetX: 3,
-  offsetY: 3,
-  color: 'success',
-  bordered: true,
-}
-</script>
-
 <template>
   <VBadge v-bind="avatarBadgeProps">
     <VAvatar style="cursor: pointer" color="primary" variant="tonal">
@@ -81,7 +69,9 @@ const avatarBadgeProps = {
               <VIcon class="me-2" icon="mdi-logout-variant" size="22" />
             </template>
 
-            <VListItemTitle>Logout</VListItemTitle>
+            <VListItemTitle>
+              <span @click="logout"> Logout </span>
+            </VListItemTitle>
           </VListItem>
         </VList>
       </VMenu>
@@ -89,3 +79,27 @@ const avatarBadgeProps = {
     </VAvatar>
   </VBadge>
 </template>
+<script setup lang="ts">
+import { useAuthStore } from '@/stores'
+import { useToast } from 'vue-toastification'
+
+import avatar1 from '@/assets/images/avatars/avatar-1.png'
+
+const avatarBadgeProps = {
+  dot: true,
+  offsetX: 3,
+  offsetY: 3,
+  color: 'success',
+  bordered: true,
+}
+
+// data
+const authStore = useAuthStore()
+const toast = useToast()
+
+// Method
+const logout = () => {
+  toast.success('Logout! 🎉')
+  return authStore.logout()
+}
+</script>
