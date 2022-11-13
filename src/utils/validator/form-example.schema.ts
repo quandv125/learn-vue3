@@ -1,5 +1,5 @@
 import * as Yup from 'yup'
-import { emailRegex } from '@/constants/common'
+import { emailRegex, birthday2Regex } from '@/constants/common'
 
 export const formComponentSampleSchema = Yup.object().shape({
   name: Yup.string().required('Name is required!'),
@@ -24,10 +24,7 @@ export const ExampleSchema = Yup.object().shape({
   //email: Yup.string().required('Email is required').email('Email is invalid'),
   dob: Yup.string()
     .required('Date of Birth is required')
-    .matches(
-      /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/,
-      'Date of Birth must be a valid date in the format YYYY-MM-DD',
-    ),
+    .matches(birthday2Regex, 'Date of Birth must be a valid date in the format YYYY-MM-DD'),
   password: Yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Passwords must match')

@@ -9,7 +9,7 @@
       </Transition>
     </RouterLink>
   </div>
-  <v-list v-model:opened="open" shaped>
+  <v-list class="nav-menu" v-model:opened="open" shaped>
     <v-list-item prepend-icon="mdi-home" title="Home" :to="{ name: 'homePage' }" rounded="shaped"></v-list-item>
     <v-list-item
       prepend-icon="mdi-ceiling-light"
@@ -67,7 +67,6 @@ const open: any = ref(['Product'])
 const products: any = ref([
   { text: 'Real-Time', icon: 'mdi-clock', to: { name: 'formPage', params: { id: 123 }, query: { name: 'Quan' } } },
   { text: 'Audience', icon: 'mdi-account', to: { name: 'register' } },
-  { text: 'Conversions', icon: 'mdi-flag', to: 'service' },
   { text: 'Contact', icon: 'mdi-pig-variant', to: 'contact' },
 ])
 const admins: any = ref([
@@ -76,17 +75,27 @@ const admins: any = ref([
   { text: 'Menu 3', icon: 'mdi-chevron-right' },
 ])
 </script>
-<style scoped>
-.rounded-shaped {
-  border-bottom-left-radius: 0px !important;
-  border-top-left-radius: 0px !important;
+<style lang="scss" scoped>
+.v-navigation-drawer__content {
+  .v-list.nav-menu {
+    a.v-list-item.v-list-item--active {
+      background: linear-gradient(270deg, rgb(var(--v-theme-primary)) 0%, white 300%);
+      color: rgb(var(--v-theme-on-primary)) !important;
+      box-shadow: 0 3px 3px -2px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)),
+        0 3px 4px 0 var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.14)),
+        0 1px 8px 0 var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.12));
+    }
+    .v-list-group {
+      --list-indent-size: 16px;
+      --prepend-width: 0;
+    }
+    .rounded-shaped {
+      border-bottom-left-radius: 0 !important;
+      border-top-left-radius: 0 !important;
 
-  border-bottom-right-radius: 32px !important;
-  border-top-right-radius: 32px !important;
-}
-
-.v-list-group {
-  --list-indent-size: 16px;
-  --prepend-width: 0px;
+      border-bottom-right-radius: 32px !important;
+      border-top-right-radius: 32px !important;
+    }
+  }
 }
 </style>
