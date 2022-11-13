@@ -105,7 +105,7 @@ iframe,
 embed,
 object {
   display: block;
-  vertical-align: middle;
+  /* vertical-align: middle; */
 }
 
 img,
@@ -173,7 +173,7 @@ textarea::placeholder {
   color: var(--vt-c-text-3);
 }
 
-input::-webkit-outer-spin-button,
+/* input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
@@ -181,15 +181,15 @@ input::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
-}
+} */
 
 textarea {
   resize: vertical;
 }
 
-select {
+/* select {
   -webkit-appearance: none;
-}
+} */
 
 fieldset {
   margin: 0;

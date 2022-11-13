@@ -87,7 +87,7 @@ const admins: any = ref([
     }
     .v-list-group {
       --list-indent-size: 16px;
-      --prepend-width: 0;
+      --prepend-width: 0px;
     }
     .rounded-shaped {
       border-bottom-left-radius: 0 !important;
