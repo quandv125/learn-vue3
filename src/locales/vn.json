@@ -5,6 +5,18 @@
   "common": {
     "select_lang": "Xin chào, đổi ngôn ngữ"
   },
+  "menu": {
+    "home": "Trang chủ",
+    "about": "Giới thiệu",
+    "service": "Dịch vụ",
+    "products": {
+      "title": "Sản phẩm",
+      "real_time": "Trực tuyến",
+      "audience": "Điểm danh",
+      "contact": "Liên hệ"
+    },
+    "admins": "Admins"
+  },
   "sign_in": {
     "title": "Đăng nhập vào dibochit",
     "buttons": {

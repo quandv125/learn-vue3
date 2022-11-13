@@ -7,7 +7,7 @@
         <example />
       </template>
       <template #fallback>
-         <v-progress-circular></v-progress-circular>
+        <v-progress-circular></v-progress-circular>
       </template>
     </Suspense>
     <br /><br /><br />

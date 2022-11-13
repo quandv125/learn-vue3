@@ -34,7 +34,7 @@ const myData = ref<TopLevel[]>([])
 
 myData.value = await getItinerary()
 </script>
-<style src="vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css"/>
+<style src="vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css" />
 
 <style>
 .ps {

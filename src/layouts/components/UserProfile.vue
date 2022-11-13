@@ -19,17 +19,17 @@
             </template>
 
             <v-list-item-title class="font-weight-semibold">
-              {{ users?.firstName || '' }} {{ users?.lastName || '' }}
+              {{ username }}
             </v-list-item-title>
             <v-list-item-subtitle class="text-disabled">
-              {{ users?.username || '' }}
+              {{ email }}
             </v-list-item-subtitle>
           </v-list-item>
 
           <v-divider class="my-2" />
 
           <!-- 👉 Profile -->
-          <v-list-item link>
+          <v-list-item @click="test" link>
             <template #prepend>
               <v-icon class="me-2" icon="mdi-account-outline" size="22" />
             </template>
@@ -82,11 +82,12 @@
   </v-badge>
 </template>
 <script setup lang="ts">
+import { computed } from 'vue'
 import { useAuthStore } from '@/stores'
 import { useToast } from 'vue-toastification'
-
+import { useI18n } from 'vue-i18n'
 import avatar1 from '@/assets/images/avatars/avatar-1.png'
-
+const { t } = useI18n()
 const avatarBadgeProps = {
   dot: true,
   offsetX: 3,
@@ -100,9 +101,17 @@ const authStore = useAuthStore()
 const toast = useToast()
 const users = JSON.parse(localStorage.getItem('user') || '{}')
 
+// computed
+const username = computed(() => users?.name || '')
+const email = computed(() => users?.email || '')
+
 // Method
 const onHandleLogout = () => {
   toast.success('Logout! 🎉')
   return authStore.logout()
+}
+
+const test = () => {
+  toast.success(t('message.hello'))
 }
 </script>

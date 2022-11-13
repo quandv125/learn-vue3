@@ -5,6 +5,18 @@
   "common": {
     "select_lang": "Hello, change language"
   },
+  "menu": {
+    "home": "Home",
+    "about": "About",
+    "service": "Service",
+    "products": {
+      "title": "Products",
+      "real_time": "Real Time",
+      "audience": "Audience",
+      "contact": "Contact"
+    },
+    "admins": "Admins"
+  },
   "sign_in": {
     "title": "SignIn",
     "buttons": {

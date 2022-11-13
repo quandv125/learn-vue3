@@ -10,29 +10,39 @@
     </RouterLink>
   </div>
   <v-list class="nav-menu" v-model:opened="open" shaped>
-    <v-list-item prepend-icon="mdi-home" title="Home" :to="{ name: 'homePage' }" rounded="shaped"></v-list-item>
+    <v-list-item
+      prepend-icon="mdi-home"
+      :title="$t('menu.home')"
+      :to="{ name: 'homePage' }"
+      rounded="shaped"
+    ></v-list-item>
     <v-list-item
       prepend-icon="mdi-ceiling-light"
-      title="About"
+      :title="$t('menu.about')"
       :to="{ name: 'aboutPage' }"
       rounded="shaped"
     ></v-list-item>
     <v-list-item
       prepend-icon="mdi-chart-pie"
-      title="Service"
+      :title="$t('menu.service')"
       :to="{ name: 'servicePage' }"
       rounded="shaped"
     ></v-list-item>
 
     <v-list-group value="Product">
       <template #activator="{ props }">
-        <v-list-item v-bind="props" prepend-icon="mdi-account-circle" title="Product" rounded="shaped"></v-list-item>
+        <v-list-item
+          v-bind="props"
+          prepend-icon="mdi-account-circle"
+          :title="$t('menu.products.title')"
+          rounded="shaped"
+        ></v-list-item>
       </template>
 
       <v-list-item
         v-for="(item, i) in products"
         :key="i"
-        :title="item.text"
+        :title="$t(item.text)"
         :prepend-icon="item.icon"
         :value="item.text"
         :to="item.to"
@@ -42,7 +52,7 @@
 
     <v-list-group value="Admin">
       <template #activator="{ props }">
-        <v-list-item v-bind="props" prepend-icon="mdi-home" title="Admin" rounded="shaped"></v-list-item>
+        <v-list-item v-bind="props" prepend-icon="mdi-home" :title="$t('menu.admins')" rounded="shaped"></v-list-item>
       </template>
 
       <v-list-item
@@ -59,15 +69,13 @@
 
 <script setup lang="ts">
 import logo from '@/assets/images/logos/aviato.png'
-
 import { ref } from 'vue'
-
 const open: any = ref(['Product'])
 
 const products: any = ref([
-  { text: 'Real-Time', icon: 'mdi-clock', to: { name: 'formPage', params: { id: 123 }, query: { name: 'Quan' } } },
-  { text: 'Audience', icon: 'mdi-account', to: { name: 'register' } },
-  { text: 'Contact', icon: 'mdi-pig-variant', to: 'contact' },
+  { text: 'menu.products.real_time', icon: 'mdi-clock', to: { name: 'formPage', params: { id: 123 } } },
+  { text: 'menu.products.audience', icon: 'mdi-account', to: { name: 'register' } },
+  { text: 'menu.products.contact', icon: 'mdi-pig-variant', to: 'contact' },
 ])
 const admins: any = ref([
   { text: 'Menu 1', icon: 'mdi-chevron-right' },

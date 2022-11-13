@@ -21,6 +21,8 @@
       </div>
     </Modal>
     <br />
+    <ButtonCustom @click="test" :label="$t('message.hello')" />
+    <br />
 
     <router-link :to="{ name: 'formPage', params: { id: 123 }, query: { name: 'Quan' } }">Go to form</router-link>
   </div>
@@ -29,8 +31,12 @@
 import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAuthStore, useUsersStore } from '@/stores'
+import { useToast } from 'vue-toastification'
+import { useI18n } from 'vue-i18n'
 
 // data
+const toast = useToast()
+const { t } = useI18n()
 const authStore = useAuthStore()
 const modalActive = ref<boolean>(false)
 const { user: authUser }: any = storeToRefs(authStore)
@@ -41,6 +47,10 @@ usersStore.getAll()
 // Method
 const onToggleModal = () => {
   modalActive.value = !modalActive.value
+}
+
+const test = () => {
+  toast.success(t('message.hello'))
 }
 </script>
 <style lang="scss" scoped>
