@@ -1,8 +1,8 @@
 <template>
   <div>
     contact
-
-    <button class="grayBtn" @click="$router.push('/')">HOME</button>
+    <br /><br />
+    <ButtonCustom @click="$router.push('/')" label="Home" />
   </div>
 </template>
 

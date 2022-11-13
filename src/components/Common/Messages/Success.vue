@@ -4,15 +4,13 @@
       <h1>Success</h1>
     </slot>
     <slot name="navigation">
-      <ul id="formControl">
-        <li class="wd20">
-          <button class="grayBtn" @click="$router.push('/')">
-            <span class="material-icons">arrow_back_ios</span>HOME
-          </button>
+      <ul>
+        <li>
+          <ButtonCustom label="Home" class="my-5" @click="$router.push('/')" />
         </li>
         <li>
           <router-link to="/">
-            <button class="grayBtn">Back To Home</button>
+            <ButtonCustom label="Back to home" class="my-5" />
           </router-link>
         </li>
       </ul>

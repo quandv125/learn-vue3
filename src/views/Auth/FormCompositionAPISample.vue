@@ -18,7 +18,11 @@
         placeholder="Your Password"
         success-message="Nice to meet you!"
       />
-      <button :class="`submit-btn ${submitClass}`" type="submit">Submit</button>
+      <br />
+      <div class="text-center my-4">
+        <ButtonCustom type="submit" :class="`submit-btn ${submitClass}`" />
+      </div>
+      <br />
     </form>
     <Success />
   </div>

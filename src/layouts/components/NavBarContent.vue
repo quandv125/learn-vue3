@@ -68,6 +68,7 @@ const products: any = ref([
   { text: 'Real-Time', icon: 'mdi-clock', to: { name: 'formPage', params: { id: 123 }, query: { name: 'Quan' } } },
   { text: 'Audience', icon: 'mdi-account', to: { name: 'register' } },
   { text: 'Conversions', icon: 'mdi-flag', to: 'service' },
+  { text: 'Contact', icon: 'mdi-pig-variant', to: 'contact' },
 ])
 const admins: any = ref([
   { text: 'Menu 1', icon: 'mdi-chevron-right' },

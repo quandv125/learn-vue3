@@ -30,6 +30,7 @@
     <Footer />
   </v-footer>
 </template>
+
 <!-- Script -->
 <script lang="ts" setup>
 import { useDisplay } from 'vuetify'
@@ -38,31 +39,5 @@ import Header from '@/layouts/components/Header.vue'
 import Footer from './components/Footer.vue'
 import { ref } from 'vue'
 const { lgAndUp, mdAndDown } = useDisplay()
-
 const drawer = ref(lgAndUp.value)
 </script>
-
-<style lang="scss">
-.layout-vertical-nav {
-  top: 0 !important;
-  height: 100% !important;
-
-  .v-navigation-drawer__content {
-    display: flex;
-    flex-direction: column;
-
-    > ul {
-      flex-grow: 1;
-    }
-  }
-}
-
-.v-toolbar__prepend {
-  margin-inline-start: 0 !important;
-}
-
-.v-footer {
-  padding-left: 24px !important;
-  padding-right: 24px !important;
-}
-</style>

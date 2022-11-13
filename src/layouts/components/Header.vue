@@ -1,5 +1,6 @@
 <template>
   <VTextField rounded prepend-inner-icon="mdi-magnify" density="compact" class="app-bar-search d-none d-sm-block" />
+
   <VSpacer />
 
   <Notification />

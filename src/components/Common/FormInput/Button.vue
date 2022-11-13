@@ -1,5 +1,5 @@
 <template>
-  <button class="submit-btn" :type="type">{{ label }}</button>
+  <v-btn class="submit-btn" :type="type">{{ label }}</v-btn>
 </template>
 <script setup lang="ts">
 import { defineProps, toRef } from 'vue'

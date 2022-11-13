@@ -48,21 +48,24 @@
 
       <SelectOptions name="status" :value="formValues.status" v-model="formValues.status" :options="PAYMENT_METHODS" />
       <div>
-        <Radio name="favorite" label="Coffee" v-model="formValues.favorite" value="coffee"  />
-        <Radio name="favorite" label="Coca" v-model="formValues.favorite" value="coca"  />
-        <Radio name="favorite" label="Tea" v-model="formValues.favorite" value="tea"  />
+        <Radio name="favorite" label="Coffee" v-model="formValues.favorite" value="coffee" />
+        <Radio name="favorite" label="Coca" v-model="formValues.favorite" value="coca" />
+        <Radio name="favorite" label="Tea" v-model="formValues.favorite" value="tea" />
         {{ errors.favorite }}
       </div>
       <br />
 
       <div>
-        <Checkbox name="purposes" label="Travel"  v-model="formValues.purposes" value="travel" />
-        <Checkbox name="purposes" label="Movie"  v-model="formValues.purposes" value="movie" />
-        <Checkbox name="purposes" label="Football"  v-model="formValues.purposes" value="football" />
+        <Checkbox name="purposes" label="Travel" v-model="formValues.purposes" value="travel" />
+        <Checkbox name="purposes" label="Movie" v-model="formValues.purposes" value="movie" />
+        <Checkbox name="purposes" label="Football" v-model="formValues.purposes" value="football" />
         <p>{{ errors.purposes }}</p>
       </div>
 
-      <ButtonCustom />
+      <div class="text-center my-4">
+        <ButtonCustom type="submit" />
+      </div>
+
       <ErrorCustom />
 
       <pre> {{ values }} </pre>
