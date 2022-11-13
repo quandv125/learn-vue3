@@ -1,83 +1,85 @@
 <template>
-  <VBadge v-bind="avatarBadgeProps">
-    <VAvatar style="cursor: pointer" color="primary" variant="tonal">
-      <VImg :src="avatar1" />
+  <v-badge v-bind="avatarBadgeProps">
+    <v-avatar style="cursor: pointer" color="primary" variant="tonal">
+      <v-img :src="avatar1" />
 
       <!-- SECTION Menu -->
-      <VMenu activator="parent" width="230" location="bottom end" offset="14px">
-        <VList>
+      <v-menu activator="parent" width="230" location="bottom end" offset="14px">
+        <v-list>
           <!-- 👉 User Avatar & Name -->
-          <VListItem>
+          <v-list-item>
             <template #prepend>
-              <VListItemAction start>
-                <VBadge v-bind="avatarBadgeProps">
-                  <VAvatar color="primary" size="40" variant="tonal">
-                    <VImg :src="avatar1" />
-                  </VAvatar>
-                </VBadge>
-              </VListItemAction>
+              <v-list-itemAction start>
+                <v-badge v-bind="avatarBadgeProps">
+                  <v-avatar color="primary" size="40" variant="tonal">
+                    <v-img :src="avatar1" />
+                  </v-avatar>
+                </v-badge>
+              </v-list-itemAction>
             </template>
 
-            <VListItemTitle class="font-weight-semibold"> John Doe </VListItemTitle>
-            <VListItemSubtitle class="text-disabled"> Admin </VListItemSubtitle>
-          </VListItem>
+            <v-list-item-title class="font-weight-semibold">
+              {{ users?.firstName || '' }} {{ users?.lastName || '' }}
+            </v-list-item-title>
+            <v-list-item-subtitle class="text-disabled">
+              {{ users?.username || '' }}
+            </v-list-item-subtitle>
+          </v-list-item>
 
-          <VDivider class="my-2" />
+          <v-divider class="my-2" />
 
           <!-- 👉 Profile -->
-          <VListItem link>
+          <v-list-item link>
             <template #prepend>
-              <VIcon class="me-2" icon="mdi-account-outline" size="22" />
+              <v-icon class="me-2" icon="mdi-account-outline" size="22" />
             </template>
 
-            <VListItemTitle>Profile</VListItemTitle>
-          </VListItem>
+            <v-list-item-title>Profile</v-list-item-title>
+          </v-list-item>
 
           <!-- 👉 Settings -->
-          <VListItem link>
+          <v-list-item link>
             <template #prepend>
-              <VIcon class="me-2" icon="mdi-cog-outline" size="22" />
+              <v-icon class="me-2" icon="mdi-cog-outline" size="22" />
             </template>
 
-            <VListItemTitle>Settings</VListItemTitle>
-          </VListItem>
+            <v-list-item-title>Settings</v-list-item-title>
+          </v-list-item>
 
           <!-- 👉 Pricing -->
-          <VListItem link>
+          <v-list-item link>
             <template #prepend>
-              <VIcon class="me-2" icon="mdi-currency-usd" size="22" />
+              <v-icon class="me-2" icon="mdi-currency-usd" size="22" />
             </template>
 
-            <VListItemTitle>Pricing</VListItemTitle>
-          </VListItem>
+            <v-list-item-title>Pricing</v-list-item-title>
+          </v-list-item>
 
           <!-- 👉 FAQ -->
-          <VListItem link>
+          <v-list-item link>
             <template #prepend>
-              <VIcon class="me-2" icon="mdi-help-circle-outline" size="22" />
+              <v-icon class="me-2" icon="mdi-help-circle-outline" size="22" />
             </template>
 
-            <VListItemTitle>FAQ</VListItemTitle>
-          </VListItem>
+            <v-list-item-title>FAQ</v-list-item-title>
+          </v-list-item>
 
           <!-- Divider -->
-          <VDivider class="my-2" />
+          <v-divider class="my-2" />
 
           <!-- 👉 Logout -->
-          <VListItem to="/login">
+          <v-list-item @click="onHandleLogout" link>
             <template #prepend>
-              <VIcon class="me-2" icon="mdi-logout-variant" size="22" />
+              <v-icon class="me-2" icon="mdi-logout-variant" size="22" />
             </template>
 
-            <VListItemTitle>
-              <span @click="logout"> Logout </span>
-            </VListItemTitle>
-          </VListItem>
-        </VList>
-      </VMenu>
+            <v-list-item-title> Logout </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
       <!-- !SECTION -->
-    </VAvatar>
-  </VBadge>
+    </v-avatar>
+  </v-badge>
 </template>
 <script setup lang="ts">
 import { useAuthStore } from '@/stores'
@@ -96,9 +98,10 @@ const avatarBadgeProps = {
 // data
 const authStore = useAuthStore()
 const toast = useToast()
+const users = JSON.parse(localStorage.getItem('user') || '{}')
 
 // Method
-const logout = () => {
+const onHandleLogout = () => {
   toast.success('Logout! 🎉')
   return authStore.logout()
 }
