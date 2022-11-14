@@ -9,65 +9,68 @@
       </Transition>
     </RouterLink>
   </div>
-  <v-list class="nav-menu" v-model:opened="open" shaped>
-    <v-list-item
-      prepend-icon="mdi-home"
-      :title="$t('menu.home')"
-      :to="{ name: 'homePage' }"
-      rounded="shaped"
-    ></v-list-item>
-    <v-list-item
-      prepend-icon="mdi-ceiling-light"
-      :title="$t('menu.about')"
-      :to="{ name: 'aboutPage' }"
-      rounded="shaped"
-    ></v-list-item>
-    <v-list-item
-      prepend-icon="mdi-chart-pie"
-      :title="$t('menu.service')"
-      :to="{ name: 'servicePage' }"
-      rounded="shaped"
-    ></v-list-item>
+  <perfect-scrollbar>
+    <v-list class="nav-menu" v-model:opened="open" shaped>
+      <v-list-item
+        prepend-icon="mdi-home"
+        :title="$t('menu.home')"
+        :to="{ name: 'homePage' }"
+        rounded="shaped"
+      ></v-list-item>
+      <v-list-item
+        prepend-icon="mdi-ceiling-light"
+        :title="$t('menu.about')"
+        :to="{ name: 'aboutPage' }"
+        rounded="shaped"
+      ></v-list-item>
+      <v-list-item
+        prepend-icon="mdi-chart-pie"
+        :title="$t('menu.service')"
+        :to="{ name: 'servicePage' }"
+        rounded="shaped"
+      ></v-list-item>
 
-    <v-list-group value="Product">
-      <template #activator="{ props }">
+      <v-list-group value="Product">
+        <template #activator="{ props }">
+          <v-list-item
+            v-bind="props"
+            prepend-icon="mdi-account-circle"
+            :title="$t('menu.products.title')"
+            rounded="shaped"
+          ></v-list-item>
+        </template>
+
         <v-list-item
-          v-bind="props"
-          prepend-icon="mdi-account-circle"
-          :title="$t('menu.products.title')"
+          v-for="(item, i) in products"
+          :key="i"
+          :title="$t(item.text)"
+          :prepend-icon="item.icon"
+          :value="item.text"
+          :to="item.to"
           rounded="shaped"
         ></v-list-item>
-      </template>
+      </v-list-group>
 
-      <v-list-item
-        v-for="(item, i) in products"
-        :key="i"
-        :title="$t(item.text)"
-        :prepend-icon="item.icon"
-        :value="item.text"
-        :to="item.to"
-        rounded="shaped"
-      ></v-list-item>
-    </v-list-group>
+      <v-list-group value="Admin">
+        <template #activator="{ props }">
+          <v-list-item v-bind="props" prepend-icon="mdi-home" :title="$t('menu.admins')" rounded="shaped"></v-list-item>
+        </template>
 
-    <v-list-group value="Admin">
-      <template #activator="{ props }">
-        <v-list-item v-bind="props" prepend-icon="mdi-home" :title="$t('menu.admins')" rounded="shaped"></v-list-item>
-      </template>
-
-      <v-list-item
-        v-for="(item, i) in admins"
-        :key="i"
-        :title="item.text"
-        :prepend-icon="item.icon"
-        :value="item.text"
-        rounded="shaped"
-      ></v-list-item>
-    </v-list-group>
-  </v-list>
+        <v-list-item
+          v-for="(item, i) in admins"
+          :key="i"
+          :title="item.text"
+          :prepend-icon="item.icon"
+          :value="item.text"
+          rounded="shaped"
+        ></v-list-item>
+      </v-list-group>
+    </v-list>
+   </perfect-scrollbar>
 </template>
 
 <script setup lang="ts">
+import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 import logo from '@/assets/images/logos/aviato.png'
 import { ref } from 'vue'
 const open: any = ref(['Product'])
@@ -83,6 +86,7 @@ const admins: any = ref([
   { text: 'Menu 3', icon: 'mdi-chevron-right' },
 ])
 </script>
+<style src="vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css" />
 <style lang="scss" scoped>
 .v-navigation-drawer__content {
   .v-list.nav-menu {
@@ -105,5 +109,8 @@ const admins: any = ref([
       border-top-right-radius: 32px !important;
     }
   }
+}
+.ps {
+  height: 90vh;
 }
 </style>
