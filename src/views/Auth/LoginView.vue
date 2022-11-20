@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import AuthForm from '@/views/Auth/AuthForm.vue'
+import AuthForm from '@/views/Auth/AuthFormComponent.vue'
 
 import { reactive } from 'vue'
 import { Form } from 'vee-validate'
@@ -61,7 +61,6 @@ const formValues: LoginType = reactive({
   password: 'abc12345@',
 })
 // method
-
 const onSubmit = async (values: any) => {
   const authStore = useAuthStore()
   const { username, password } = values

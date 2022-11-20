@@ -4,7 +4,7 @@
       <VCardText>
         <Form
           @submit="onSubmit"
-          :validation-schema="loginSchema"
+          :validation-schema="forgotPasswordSchema"
           :initial-values="formValues"
           v-slot="{ isSubmitting }"
         >
@@ -35,11 +35,11 @@
 </template>
 
 <script setup lang="ts">
-import AuthForm from '@/views/Auth/AuthForm.vue'
+import AuthForm from '@/views/Auth/AuthFormComponent.vue'
 
 import { reactive } from 'vue'
 import { Form } from 'vee-validate'
-import { loginSchema } from '@/utils/validator'
+import { forgotPasswordSchema } from '@/utils/validator'
 import { useAuthStore } from '@/stores'
 import type { LoginType } from '@/types'
 
