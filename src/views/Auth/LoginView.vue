@@ -21,28 +21,32 @@
           :initial-values="formValues"
           v-slot="{ isSubmitting }"
         >
-          <TextInput
-            name="username"
-            type="text"
-            label="E-mail"
-            :value="formValues.username"
-            placeholder="Your email address"
-            class="my-10"
-          />
+          <VCol cols="12">
+            <TextInput
+              name="username"
+              type="text"
+              label="E-mail"
+              :value="formValues.username"
+              placeholder="Your email address"
+            />
+          </VCol>
+          <VCol cols="12">
+            <TextInput
+              name="password"
+              type="password"
+              label="Password"
+              :value="formValues.password"
+              autocomplete="password"
+              placeholder="Your password"
+            />
 
-          <TextInput
-            name="password"
-            type="password"
-            label="Password"
-            :value="formValues.password"
-            autocomplete="password"
-            placeholder="Your password"
-            class="my-10"
-          />
+            <div class="d-flex align-center justify-space-between flex-wrap mt-1 mb-4">
+              <VCheckbox label="Remember me" />
 
-          <div class="text-center my-4">
-            <ButtonCustom type="submit" class="submit-btn" :loading="isSubmitting" />
-          </div>
+              <a class="ms-2 mb-1" href="javascript:void(0)"> Forgot Password? </a>
+            </div>
+            <ButtonCustom block type="submit" label="Login" :loading="isSubmitting" />
+          </VCol>
         </Form>
       </VCardText>
     </VCard>
