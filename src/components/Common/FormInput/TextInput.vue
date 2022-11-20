@@ -1,11 +1,13 @@
 <template>
   <div class="FormInputMaster" :class="{ 'has-error': !!errorMessage, success: meta.valid }">
-    <label :for="name">{{ label }}</label>
-    <input
+    <!-- <label :for="name">{{ label }}</label> -->
+    <VTextField
       :name="name"
       :id="name"
       :type="type"
+      :label="label"
       :value="inputValue"
+      v-model="inputValue"
       :placeholder="placeholder"
       :autocomplete="autocomplete"
       @change="onHandleChange"
@@ -45,7 +47,7 @@ const props = defineProps({
   },
   successMessage: {
     type: String,
-    default: 'Good job!',
+    default: '',
   },
   placeholder: {
     type: String,

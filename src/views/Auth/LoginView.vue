@@ -1,76 +1,95 @@
 <template>
-  <div>
-    <div class="alert alert-info">
-      <p>
-        {{ $t('sign_in.messages.none_account', { value: 'This is an example of content translation' }) }}
-      </p>
-      {{ $t('sign_in.input_text.username') }}: test<br />
-      {{ $t('sign_in.input_text.password') }}: test
-    </div>
-    <h2>{{ $t('sign_in.title') }}</h2>
-    <Form @submit="onHandleSubmit" :validation-schema="loginSchema" v-slot="{ errors, isSubmitting }">
-      <div class="form-group">
-        <label> {{ $t('sign_in.input_text.username') }} </label>
-        <Field
-          name="username"
-          type="text"
-          class="form-control"
-          v-model="form.username"
-          :class="{ 'is-invalid': errors.username }"
-        />
-        <div class="invalid-feedback">{{ errors.username }}</div>
-      </div>
-      <div class="form-group">
-        <label>{{ $t('sign_in.input_text.password') }}</label>
-        <Field
-          name="password"
-          type="password"
-          class="form-control"
-          autocomplete="on"
-          v-model="form.password"
-          :class="{ 'is-invalid': errors.password }"
-        />
-        <div class="invalid-feedback">{{ errors.password }}</div>
-      </div>
-      <div class="form-group">
-        <v-btn variant="flat" type="submit" :loading="isSubmitting">
-          {{ $t('sign_in.title') }}
-        </v-btn>
-      </div>
-      <div v-if="errors.apiError" class="alert alert-danger mt-3 mb-0">
-        {{ errors.apiError }}
-      </div>
-    </Form>
-    <h1 v-if="authUser">Hi {{ authUser.username }}!</h1>
-    <br />
-    <div>
-      <router-link to="/register"> Register </router-link>
-    </div>
+  <div class="auth-wrapper d-flex align-center justify-center pa-4">
+    <VCard class="auth-card pa-4 pt-7" max-width="448">
+      <VCardItem class="justify-center">
+        <template #prepend>
+          <div class="d-flex">
+            <img :src="logo" />
+          </div>
+        </template>
+        <VCardTitle class="font-weight-semibold text-2xl text-uppercase"> My Theme </VCardTitle>
+      </VCardItem>
+
+      <VCardText class="pt-2">
+        <p class="mb-0">Please sign-in to your account and start the adventure</p>
+      </VCardText>
+
+      <VCardText>
+        <Form
+          @submit="onSubmit"
+          :validation-schema="loginSchema"
+          :initial-values="formValues"
+          v-slot="{ isSubmitting }"
+        >
+          <TextInput
+            name="username"
+            type="text"
+            label="E-mail"
+            :value="formValues.username"
+            placeholder="Your email address"
+            class="my-10"
+          />
+
+          <TextInput
+            name="password"
+            type="password"
+            label="Password"
+            :value="formValues.password"
+            autocomplete="password"
+            placeholder="Your password"
+            class="my-10"
+          />
+
+          <div class="text-center my-4">
+            <ButtonCustom type="submit" class="submit-btn" :loading="isSubmitting" />
+          </div>
+        </Form>
+      </VCardText>
+    </VCard>
+
+    <VImg :src="authV1Tree" :width="250" class="auth-footer-start-tree d-none d-md-block" />
+    <VImg :src="authV1Tree2" :width="350" class="auth-footer-end-tree d-none d-md-block" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive } from 'vue'
-import { storeToRefs } from 'pinia'
-import { Form, Field } from 'vee-validate'
+import { reactive } from 'vue'
+import { Form } from 'vee-validate'
 import { loginSchema } from '@/utils/validator'
 import { useAuthStore } from '@/stores'
 import type { LoginType } from '@/types'
+import logo from '@/assets/images/logos/aviato.png'
+import authV1Tree2 from '@/assets/images/pages/auth-v1-tree-2.png'
+import authV1Tree from '@/assets/images/pages/auth-v1-tree.png'
 
-const form: LoginType = reactive({ username: 'quandv.125@gmail.com', password: 'abc12345@' })
+// data
+const formValues: LoginType = reactive({
+  username: 'quandv.125@gmail.com',
+  password: 'abc12345@',
+})
+// method
 
-const authStore = useAuthStore()
-
-const { user: authUser } = storeToRefs(authStore)
-
-const onHandleSubmit = async (values: any, { setErrors }: any) => {
+const onSubmit = async (values: any) => {
   const authStore = useAuthStore()
   const { username, password } = values
-  return await authStore.login(username, password).catch(error => setErrors({ apiError: error }))
+  return await authStore.login(username, password)
 }
-
-onMounted(() => {
-  console.log(import.meta.env.VITE_APP_NAME)
-  console.log('Component is mounted!', authStore.user)
-})
 </script>
+<style scoped>
+.auth-wrapper {
+  min-block-size: calc(var(--vh, 1vh) * 95);
+}
+.auth-footer-start-tree,
+.auth-footer-end-tree {
+  position: absolute;
+  z-index: 1;
+}
+.auth-footer-start-tree {
+  inset-block-end: 0;
+  inset-inline-start: 0;
+}
+.auth-footer-end-tree {
+  inset-block-end: 0;
+  inset-inline-end: 0;
+}
+</style>
