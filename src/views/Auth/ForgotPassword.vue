@@ -1,5 +1,5 @@
 <template>
-  <auth-form title="Login" desc="Please sign-in to your account and start the adventure">
+  <auth-form title="Forgot Password" desc="Please sign-in to your account and start the adventure">
     <template #main>
       <VCardText>
         <Form
@@ -16,29 +16,17 @@
               :value="formValues.username"
               placeholder="Your email address"
             />
-
-            <TextInput
-              name="password"
-              type="password"
-              label="Password"
-              :value="formValues.password"
-              autocomplete="password"
-              placeholder="Your password"
-            />
-
-            <div class="d-flex align-center justify-space-between flex-wrap mt-1 mb-4">
-              <VCheckbox label="Remember me" />
-
-              <RouterLink :to="{ name: 'forgotPassword' }" class="ms-2 mb-1 text-primary">
-                Forgot Password?
-              </RouterLink>
-            </div>
-            <ButtonCustom block type="submit" label="Login" :loading="isSubmitting" />
           </VCol>
-
+          <VCol cols="12">
+            <ButtonCustom block type="submit" label="Forgot Password" :loading="isSubmitting" />
+          </VCol>
           <VCol cols="12" class="text-center text-base">
-            <span>New on our platform?</span>
-            <RouterLink class="text-primary ms-2" :to="{ name: 'register' }"> Create an account </RouterLink>
+            <RouterLink class="text-primary ms-2" :to="{ name: 'loginPage' }"> Back to login </RouterLink>
+          </VCol>
+          <VCol cols="12" class="text-center">
+            <RouterLink :to="{ name: 'resetPassword' }">
+              <p class="mb-0 text-primary">Reset Password</p>
+            </RouterLink>
           </VCol>
         </Form>
       </VCardText>
@@ -68,3 +56,21 @@ const onSubmit = async (values: any) => {
   return await authStore.login(username, password)
 }
 </script>
+<style scoped>
+.auth-wrapper {
+  min-block-size: calc(var(--vh, 1vh) * 95);
+}
+.auth-footer-start-tree,
+.auth-footer-end-tree {
+  position: absolute;
+  z-index: 1;
+}
+.auth-footer-start-tree {
+  inset-block-end: 0;
+  inset-inline-start: 0;
+}
+.auth-footer-end-tree {
+  inset-block-end: 0;
+  inset-inline-end: 0;
+}
+</style>

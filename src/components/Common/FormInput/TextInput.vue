@@ -10,6 +10,7 @@
       v-model="inputValue"
       :placeholder="placeholder"
       :autocomplete="autocomplete"
+      :disabled="props.disabled"
       @change="onHandleChange"
       @input="handleChange"
       @blur="handleBlur"
@@ -57,6 +58,10 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
 })
 // Ref
 const name = toRef(props, 'name')
@@ -78,7 +83,7 @@ const onHandleChange = (event: any) => {
 <style scoped>
 .FormInputMaster {
   position: relative;
-  margin-bottom: calc(1em * 1.5);
+  margin-bottom: calc(1em * 2);
   width: 100%;
 }
 

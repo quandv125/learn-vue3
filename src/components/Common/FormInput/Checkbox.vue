@@ -1,13 +1,13 @@
 <template>
   <label :for="`chbox-${value}`" :class="className">
-     <input 
+    <input
       :name="name"
       :id="`chbox-${value}`"
       :type="type"
       :value="value"
       :checked="props.modelValue.includes(value)"
       @click="handleChange(value)"
-     />
+    />
     <span>{{ label }}</span>
   </label>
 </template>
@@ -48,5 +48,5 @@ const { checked, handleChange } = useField(name, undefined, {
   type: 'checkbox',
   checkedValue: true,
   uncheckedValue: false,
-});
+})
 </script>

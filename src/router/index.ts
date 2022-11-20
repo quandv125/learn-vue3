@@ -3,11 +3,14 @@ import { useAuthStore } from '@/stores'
 import {
   HomeView,
   LoginView,
+  Register,
+  ForgotPassword,
+  ResetPassword,
   AboutView,
   ContactView,
   ServiceView,
   FormComponentSample,
-  FormCompositionAPISample,
+  // FormCompositionAPISample,
   NotFound,
   Forbidden,
 } from '@/views'
@@ -56,12 +59,36 @@ export const routersList = [
       layout: 'BlankLayout',
     },
   },
+  // {
+  //   path: '/register',
+  //   name: 'register',
+  //   component: FormCompositionAPISample,
+  //   meta: {
+  //     // layout: 'BlankLayout',
+  //   },
+  // },
   {
     path: '/register',
     name: 'register',
-    component: FormCompositionAPISample,
+    component: Register,
     meta: {
-      // layout: 'BlankLayout',
+      layout: 'BlankLayout',
+    },
+  },
+  {
+    path: '/forgot-password',
+    name: 'forgotPassword',
+    component: ForgotPassword,
+    meta: {
+      layout: 'BlankLayout',
+    },
+  },
+  {
+    path: '/reset-password',
+    name: 'resetPassword',
+    component: ResetPassword,
+    meta: {
+      layout: 'BlankLayout',
     },
   },
   {
